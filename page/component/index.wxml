@@ -1,0 +1,39 @@
+<view class="index">
+  <view class="head">
+    <view class="title">股票金融</view>
+    <view class="desc">这是股票金融的简介</view>
+  </view>
+
+  <view class="body">
+    <view class="widgets">
+      <view class="widgets__item">
+        <view id="view">
+          <navigator url="../../pages/share/login/login" class="widgets__info {{viewShow ? 'widgets__info_show' : ''}}">
+            <text class="widgets__info-name">登录</text>
+          </navigator>
+        </view>
+      </view>
+       <view class="widgets__item">
+        <view id="form">
+          <navigator url="../../pages/share/queryPriceResult/queryPriceResult" class="widgets__info {{formShow ? 'widgets__info_show' : ''}}" bindtap="widgetsToggle">
+            <text class="widgets__info-name">询价结果</text>
+          </navigator>
+        </view>
+      </view>
+      <view class="widgets__item">
+        <view id="form">
+          <navigator url="../../pages/share/contactUs/contactUs" class="widgets__info {{formShow ? 'widgets__info_show' : ''}}" bindtap="widgetsToggle">
+            <text class="widgets__info-name">联系我们</text>
+          </navigator>
+        </view>
+      </view>
+       <view class="widgets__item">
+        <view id="form">
+          <navigator url="../../pages/share/verificationCode/verificationCode" class="widgets__info {{formShow ? 'widgets__info_show' : ''}}" bindtap="widgetsToggle">
+            <text class="widgets__info-name">验证码</text>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
