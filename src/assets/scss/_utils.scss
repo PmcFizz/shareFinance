@@ -4,7 +4,7 @@
  *
  * ------------------------------------------------------------------
  *
- * @author  JeffMa
+ * @author  ljr
  * @link    https://devework.com/
  * @data    2017-06-11
  */
@@ -193,15 +193,5 @@
 	font-size: $fontSizeSmall;
 	line-height: $fontSizeSmall + 2px;
 	margin-bottom: $marginTopSmall;
-	&:before {
-		position: absolute;
-		content: " ";
-		top: 7px;
-		left: -10px;
-		width: 4px;
-		height: 4px;
-		border-radius: 4px;
-		background-color: $colorBlack;
-	}
 }
 

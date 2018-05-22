@@ -6,6 +6,7 @@
 		<view class='mid_input'>
 			<input class='user' type='text' placeholder="请输入姓名" placeholder-class="phcolor" value=''></input>
 		</view>
+
 	</view>
 	<view class='middle'>
 		<view class='mid_img'>
@@ -15,5 +16,15 @@
 			<input class='user' type='number' placeholder="请输入11位手机号" placeholder-class="phcolor"  value='' maxlength='11'></input>
 		</view>
 	</view>
-	<text class='bottom' bindtap = 'login'>登录</text>
+	<view class="middle">
+		<view class="mid_img">
+			<image class="user-img" src=""></image>
+		</view>
+		<view class="mid_input">
+			<input type="text" type="number" placeholder="请输入验证码" placeholder-class="phcolor" value=""  maxlength='6'></input>
+		</view>
+	</view>
+	<view class="button-wrap">
+		<button class="consult-btn"  bindtap = 'login'>登录</button>
+	</view>
 </view>

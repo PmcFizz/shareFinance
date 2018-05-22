@@ -55,7 +55,7 @@
 }
 .bottom{
 	display: block;
-	margin: 0 auto;
+	margin: 30px auto;
 	width: 600rpx;
 	height: 85rpx;
 	background: #5267f6;
@@ -72,3 +72,18 @@ input{
 	margin-left: 20rpx
 }
 
+.button-wrap {
+	padding: 25px 30px;
+
+	.consult-btn {
+		margin: 0 auto;
+		width: 310px;
+		height: 40px;
+		background: $colorRed;
+		color: #ffffff;
+		font-size: 16px;
+		border-radius: 20px;
+		text-align: center;
+		line-height: 40px;
+	}
+}

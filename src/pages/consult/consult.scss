@@ -1,47 +1,42 @@
 // 支持文件
 @import "../../assets/scss/support";
 
-.index {
+.consults {
+	padding: 10px 30px;
+	font-size: 16px;
+	.consult-txt {
+		width: 300px;
+		border: 1px solid #f1f1f1;
+		padding: 5px;
+		line-height: 22px;
+	}
+}
+.contacts {
+	padding: 10px 30px;
+	font-size: 16px;
+	.input-txt {
+		border: 1px solid #f1f1f1;
+		padding: 5px;
+		line-height: 22px;
+	}
 
 }
+.btn-wrap {
+	padding: 25px 30px;
 
-.index__banner-img {
-	width: 100%;
-	height: auto;
-}
+	.btns {
+		margin: 0 auto;
+		width: 150px;
+		height: 40px;
+		background: $colorRed;
+		color: #ffffff;
+		font-size: 16px;
+		border-radius: 6px;
+		text-align: center;
+		line-height: 40px;
+	}
 
-.index__header {
-}
-
-.index__header-title {
-	font-size: 26px;
-	margin-top: 20px;
-	font-weight: 500;
-}
-
-.index__header-desc {
-	font-size: 14px;
-	margin-top: 20px;
-}
-
-.index__header-link {
-	color: #5ba4e5;
-}
-
-.index__content {
-	margin-top: 40px;
-}
-
-.index__content-icons {
-	align-items: center;
-}
-
-.index__content-icons-item {
-	font-size: 0;
-	line-height: 0;
-}
-
-.index_qrcode {
-	width: 150px;
-	height: 150px;
+	.clear {
+		background: #b1b1b1;
+	}
 }

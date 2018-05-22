@@ -9,6 +9,11 @@ Page({
 	onLoad: function () {
 
 	},
+	doSearch: function () {
+		wx.navigateTo({
+			url: '../serch_result/serch_result',
+		})
+	},
 	copyText: function (e) {
 		var txt = e.currentTarget.dataset.text;
 		wx.setClipboardData({

@@ -1,4 +1,15 @@
 <!--index.wxml-->
-<view class="app index">
-<text>咨询我们页</text>
+<view class="consult">
+	<view class="consults">
+		<textarea class="consult-txt" placeholder="请输入留言内容，我们将尽快联系您">
+
+		</textarea>
+	</view>
+	<view class="contacts">
+		<input type="text" class="input-txt" placeholder="请输入电话或有邮箱"></input>
+	</view>
+	<view class="btn-wrap u-clearfix">
+		<button class="btns u-fl-l save">保存</button>
+		<button class="btns u-fl-r clear">清空</button>
+	</view>
 </view>

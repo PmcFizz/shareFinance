@@ -1,4 +1,32 @@
-<view class="app more">
-	<text>查询结果页</text>
+<view class="serch_result">
+	<view class="result-content u-ul ">
+		<view class="u-li u-clearfix">
+			<text class=" u-fl-l">标的股票</text>
+			<text class="u-fl-r">平安银行 000031</text>
+		</view>
+		<view class="u-li u-clearfix">
+			<text class="u-fl-l">名义本金</text>
+			<text class="u-fl-r">10万元</text>
+		</view>
+		<view class="u-li u-clearfix">
+			<text class="u-fl-l">合约期限</text>
+			<text class="u-fl-r">90天</text>
+		</view>
+		<view class="u-li u-clearfix">
+			<text class="u-fl-l">起始日期</text>
+			<text class="u-fl-r">2018-0523</text>
+		</view>
+		<view class="u-li u-clearfix">
+			<text class="u-fl-l">到期日期</text>
+			<text class="u-fl-r">2018-6-30</text>
+		</view>
+	</view>
+	<view class="profit-price">
+		<text class="u-fl-l">盈利定价</text>
+		<text class="percents u-fl-r">8.88%</text>
+	</view>
+	<view class="button-wrap">
+		<button class="consult-btn" bindtap="searchAgin">继续询价</button>
+	</view>
 </view>
 

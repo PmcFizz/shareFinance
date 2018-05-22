@@ -1,6 +1,36 @@
 <!--index.wxml-->
-<view class="app index">
+<view class="search">
+	<view class="search-con u-flex">
+		<text class="tits">标的股票：</text>
+		<input type="text" placeholder="请输入6位股票代码" class="input-txt u-flex-item"></input>
+	</view>
+	<view class="search-con u-flex">
+		<text class="tits">合约期限:</text>
+		<view class="item-wrap u-flex-item u-clearfix">
+			<text class="choose-item u-fl-l">15天</text>
+			<text class="choose-item u-fl-l active">30天</text>
+			<text class="choose-item u-fl-l">90天</text>
+			<text class="choose-item u-fl-l">90天</text>
+		</view>
+	</view>
+	<view class="search-con u-flex">
+		<text class="tits">名义本金:</text>
+		<view class="item-wrap u-flex-item u-clearfix">
+			<text class="rule-txt">万元</text>
+			<input type="text" placeholder="自定义金额10万起" class="input-txt"></input>
+			<view class="item-contain">
+				<text class="choose-item u-fl-l">10万</text>
+				<text class="choose-item u-fl-l active">20万</text>
+				<text class="choose-item u-fl-l">30万</text>
+				<text class="choose-item u-fl-l">50万</text>
+				<text class="choose-item u-fl-l">100万</text>
+				<text class="choose-item u-fl-l">300万</text>
+			</view>
 
-	<text>查询页</text>
+		</view>
+	</view>
 
+	<view class="button-wrap">
+		<button class="consult-btn" bindtap="doSearch">一键询价</button>
+	</view>
 </view>

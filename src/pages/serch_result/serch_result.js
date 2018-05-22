@@ -6,5 +6,10 @@ Page({
 	},
 	onLoad: function () {
 
+	},
+	searchAgin: function () {
+		wx.switchTab({
+			url: '../search/search'
+		})
 	}
 })

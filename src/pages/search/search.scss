@@ -1,47 +1,62 @@
 // 支持文件
 @import "../../assets/scss/support";
 
-.index {
+.search-con {
+	padding: 10px;
+	font-size: 16px;
+	.tits {
+		line-height: 32px;
+	}
+	.input-txt {
+		border: 1px solid #f1f1f1;
+		padding: 5px;
+		line-height: 22px;
+		text-indent: 1em;
+	}
 
+	.item-wrap {
+		padding: 0 5px;
+		position: relative;
+		.item-contain {
+			margin-top: 10px;
+		}
+		.choose-item {
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			border: 1px solid #f1f1f1;
+			border-radius: 5px;
+		}
+
+		.active {
+			color: $colorRed;
+			border: 1px solid $colorRed;
+		}
+
+		.rule-txt {
+			position: absolute;
+			top: 10px;
+			right: 30px;
+			color: #333;
+		}
+	}
 }
 
-.index__banner-img {
-	width: 100%;
-	height: auto;
-}
+.button-wrap {
+	padding: 25px 30px;
 
-.index__header {
-}
-
-.index__header-title {
-	font-size: 26px;
-	margin-top: 20px;
-	font-weight: 500;
-}
-
-.index__header-desc {
-	font-size: 14px;
-	margin-top: 20px;
-}
-
-.index__header-link {
-	color: #5ba4e5;
-}
-
-.index__content {
-	margin-top: 40px;
-}
-
-.index__content-icons {
-	align-items: center;
-}
-
-.index__content-icons-item {
-	font-size: 0;
-	line-height: 0;
-}
-
-.index_qrcode {
-	width: 150px;
-	height: 150px;
+	.consult-btn {
+		margin: 0 auto;
+		width: 310px;
+		height: 40px;
+		background: $colorRed;
+		color: #ffffff;
+		font-size: 16px;
+		border-radius: 20px;
+		text-align: center;
+		line-height: 40px;
+	}
 }
