@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view class="app index">
+<text>咨询我们页</text>
+</view>

@@ -9,11 +9,6 @@ Page({
 	onLoad: function () {
 
 	},
-	login: function () {
-		wx.switchTab({
-			url: '../search/search',
-		})
-	},
 	copyText: function (e) {
 		var txt = e.currentTarget.dataset.text;
 		wx.setClipboardData({

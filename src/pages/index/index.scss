@@ -1,47 +1,74 @@
 // 支持文件
 @import "../../assets/scss/support";
 
-.index {
+.container{
+	display: flex;
+	flex-direction: column;
+}
+.top{
+
+	height: 222rpx;
+	padding: 30rpx 0 30rpx 46rpx;
+
+
+	border-bottom: solid 1px #e3e3e3;
+
+
+	background:#fff;
 
 }
+.top image{
 
-.index__banner-img {
+	height: 38rpx;
+	width:590rpx;
+
+
+
+}
+.middle{
+	height: 103rpx;
+	border-bottom: solid 1px #e3e3e3;
+	background: white;
+	display: flex;
+	flex-direction: row;
+	justify-content:flex-start;
+	padding: 0 46rpx
+}
+.mid_img{
+
+	align-self: center
+}
+.user-img{
+	width: 34rpx;
+	height: 34rpx;
+	align-self: center
+}
+.mid_input{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 90%
+}
+
+.phcolor{
+	color: #b1b1b1;
+}
+.bottom{
+	display: block;
+	margin: 0 auto;
+	width: 600rpx;
+	height: 85rpx;
+	background: #5267f6;
+	color: #ffffff;
+	font-size: 16px;
+	border-radius: 44rpx;
+	text-align: center;
+	line-height: 85rpx;
+}
+input{
 	width: 100%;
-	height: auto;
-}
-
-.index__header {
-}
-
-.index__header-title {
-	font-size: 26px;
-	margin-top: 20px;
-	font-weight: 500;
-}
-
-.index__header-desc {
+	align-self: center;
 	font-size: 14px;
-	margin-top: 20px;
+	margin-left: 20rpx
 }
 
-.index__header-link {
-	color: #5ba4e5;
-}
-
-.index__content {
-	margin-top: 40px;
-}
-
-.index__content-icons {
-	align-items: center;
-}
-
-.index__content-icons-item {
-	font-size: 0;
-	line-height: 0;
-}
-
-.index_qrcode {
-	width: 150px;
-	height: 150px;
-}

@@ -1,32 +1,38 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/more/more"
+        "pages/consult/consult",
+        "pages/search/search",
+        "pages/serch_result/serch_result"
     ],
     "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "WeApp-Workflow",
-        "navigationBarTextStyle": "black"
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "股票查询",
+        "navigationBarBackgroundColor": "#fbf9fe",
+        "backgroundColor": "#fbf9fe"
     },
     "tabBar": {
-        "color": "#7A7E83",
-        "selectedColor": "#CF4646",
+        "color": "#dddddd",
+        "selectedColor": "#f11",
         "borderStyle": "black",
         "backgroundColor": "#ffffff",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "iconPath": "image/home_D.png",
-                "selectedIconPath": "image/home.png",
-                "text": "介绍"
-            },
-            {
-                "pagePath": "pages/more/more",
-                "iconPath": "image/set_D.png",
-                "selectedIconPath": "image/set.png",
-                "text": "更多"
-            }
-        ]
-    }
+        "list": [{
+            "pagePath": "pages/search/search",
+            "iconPath": "image/home_D.png",
+            "selectedIconPath": "image/home.png",
+            "text": "询价"
+        },{
+            "pagePath": "pages/consult/consult",
+            "iconPath": "image/set_D.png",
+            "selectedIconPath": "image/set.png",
+            "text": "联系我们"
+        }]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
 }
