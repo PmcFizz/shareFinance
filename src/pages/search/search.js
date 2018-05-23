@@ -10,8 +10,15 @@ Page({
 
 	},
 	doSearch: function () {
-		wx.navigateTo({
-			url: '../serch_result/serch_result',
+		app.searchPrice({},function (res) {
+			wx.showToast({
+				title: '复制成功！',
+				icon: 'success',
+				duration: 1000
+			})
+			wx.navigateTo({
+				url: '../serch_result/serch_result',
+			})
 		})
 	},
 	copyText: function (e) {

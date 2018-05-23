@@ -4,16 +4,15 @@
 			<image class='user-img' src='/image/icon_user.png'></image>
 		</view>
 		<view class='mid_input'>
-			<input class='user' type='text' placeholder="请输入姓名" placeholder-class="phcolor" value=''></input>
+			<input class='user' type='text' bindinput="nameInput" placeholder="请输入姓名" placeholder-class="phcolor" value=''/>
 		</view>
-
 	</view>
 	<view class='middle'>
 		<view class='mid_img'>
 			<image class='user-img' src='/image/icon_tel.png'></image>
 		</view>
 		<view class='mid_input'>
-			<input class='user' type='number' placeholder="请输入11位手机号" placeholder-class="phcolor"  value='' maxlength='11'></input>
+			<input class='user' type='number' bindinput="pwdInput" placeholder="请输入11位手机号" placeholder-class="phcolor"  value='' maxlength='11'/>
 		</view>
 	</view>
 	<view class="middle">
@@ -21,7 +20,7 @@
 			<image class="user-img" src=""></image>
 		</view>
 		<view class="mid_input">
-			<input type="text" type="number" placeholder="请输入验证码" placeholder-class="phcolor" value=""  maxlength='6'></input>
+			<input type="text" type="number" bindinput="codeInput" placeholder="请输入验证码" placeholder-class="phcolor" value=""  maxlength='6'/>
 		</view>
 	</view>
 	<view class="button-wrap">
