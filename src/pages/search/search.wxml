@@ -7,24 +7,16 @@
 	<view class="search-con u-flex">
 		<text class="tits">合约期限:</text>
 		<view class="item-wrap u-flex-item u-clearfix">
-			<text class="choose-item u-fl-l" bindtap="tapHeYue(item)" :value="item.value" wx:for="{{qixian}}">item.name</text>
-			<!--<text class="choose-item u-fl-l active">30天</text>-->
-			<!--<text class="choose-item u-fl-l">90天</text>-->
-			<!--<text class="choose-item u-fl-l">90天</text>-->
+			<text bindtap="tapHeYue(item)" class="{{item.value==30 ? 'choose-item u-fl-l active' : 'choose-item u-fl-l' }}" :value="item.value" wx:key="item" wx:for="{{qixian}}">{{item.name}}</text>
 		</view>
 	</view>
 	<view class="search-con u-flex">
 		<text class="tits">名义本金:</text>
 		<view class="item-wrap u-flex-item u-clearfix">
 			<text class="rule-txt">万元</text>
-			<input type="text" placeholder="自定义金额10万起" bindinput="moneyInput" class="input-txt"></input>
+			<input type="text" placeholder="自定义金额10万起" bindinput="moneyInput" class="input-txt"/>
 			<view class="item-contain">
-				<text class="choose-item u-fl-l" bindtap="tapBenJin(item)" wx:for="benjin" :value="item.value">item.name</text>
-				<!--<text class="choose-item u-fl-l active">20万</text>-->
-				<!--<text class="choose-item u-fl-l">30万</text>-->
-				<!--<text class="choose-item u-fl-l">50万</text>-->
-				<!--<text class="choose-item u-fl-l">100万</text>-->
-				<!--<text class="choose-item u-fl-l">300万</text>-->
+				<text class="choose-item u-fl-l" bindtap="tapBenJin(item)" class="{{item.value==20 ? 'choose-item u-fl-l active' : 'choose-item u-fl-l' }}"  wx:key="item" wx:for="{{benjin}}" :value="item.value">{{item.name}}</text>
 			</view>
 
 		</view>

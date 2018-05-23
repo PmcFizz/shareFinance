@@ -5,7 +5,7 @@ Page({
 	data: {
 		userInfo: {},
 		account: '',
-		pwd: '',
+		phone: '',
 		code: ''
 	},
 	onLoad: function () {
@@ -18,9 +18,9 @@ Page({
 			account: e.detail.value
 		})
 	},
-	pwdInput: function (e) {
+	phoneInput: function (e) {
 		this.setData({
-			pwd: e.detail.value
+			phone: e.detail.value
 		})
 	},
 	codeInput: function (e) {
@@ -32,23 +32,26 @@ Page({
 		if (!this.data.account) {
 			wx.showToast({
 				title: '请填写用户名',
-				icon: 'error',
+				icon: 'none',
 				duration: 1000
 			})
+			return false
 		}
-		if (!this.data.pwd) {
+		if (!this.data.phone) {
 			wx.showToast({
-				title: '请填写密码',
-				icon: 'error',
+				title: '请填写手机号',
+				icon: 'none',
 				duration: 1000
 			})
+			return false
 		}
 		if (!this.data.code) {
 			wx.showToast({
 				title: '请填写验证码',
-				icon: 'error',
+				icon: 'none',
 				duration: 1000
 			})
+			return false
 		}
 		var sendData = {
 			account: this.data.account,
@@ -56,13 +59,13 @@ Page({
 			code: this.data.code
 		}
 		app.login(sendData, function (res) {
-			if (res.code === 0) {
+			if (res.data.code === 0) {
 				wx.switchTab({
 					url: '../search/search',
 				})
 			} else {
 				wx.showToast({
-					title: res.message,
+					title: res.data.message,
 					icon: 'error',
 					duration: 1000
 				})

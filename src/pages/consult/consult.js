@@ -13,23 +13,25 @@ Page({
 		if (!this.data.suggest) {
 			wx.showToast({
 				title: '请填写您的意见',
-				icon: 'error',
+				icon: 'none',
 				duration: 1000
 			})
+			return false
 		}
 		if (!this.data.email) {
 			wx.showToast({
 				title: '请填写手机号或邮箱',
-				icon: 'error',
+				icon: 'none',
 				duration: 1000
 			})
+			return false
 		}
 		var sendDta = {
 			suggest: this.data.suggest,
 			email: this.data.email
 		}
 		app.contentUs(sendDta, function (res) {
-			if (res.code === 0) {
+			if (res.data.code === 0) {
 				wx.showToast({
 					title: '您的意见发送！',
 					icon: 'success',
@@ -38,7 +40,7 @@ Page({
 			} else {
 				wx.showToast({
 					title: res.message,
-					icon: 'error',
+					icon: 'none',
 					duration: 1000
 				})
 			}
@@ -56,7 +58,6 @@ Page({
 	},
 	// 清空数据
 	resetData: function () {
-		this.setData({email: ''})
-		this.setData({suggest: ''})
+		this.setData({email: '', suggest: ''})
 	}
 })

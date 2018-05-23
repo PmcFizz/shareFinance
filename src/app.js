@@ -35,17 +35,12 @@ App({
 	// 查询价格
 	searchPrice: function (data, cb) {
 		wx.request({
-			url: this.serverHost + '/getsearchData',
+			url: this.serverHost + '/searchPrice',
 			data: data,
 			method: 'GET',
 			success: function (res) {
 				if (res.data.code == 0) {
 					typeof cb == 'function' && cb(res)
-					wx.showModal({
-						title: '提示',
-						content: '查询成功!',
-						showCancel: false
-					})
 				}
 			}
 		})

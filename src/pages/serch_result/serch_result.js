@@ -20,13 +20,14 @@ Page({
 		})
 	},
 	getSearchResult: function () {
-		app.getSearchData({}, function (res) {
-			if (res.code === 0) {
-				this.setData({infoData: res.data})
+		var _self = this
+		app.searchPrice({}, function (res) {
+			if (res.data.code === 0) {
+				_self.setData({infoData: res.data.data})
 			} else {
 				wx.showToast({
-					title: res.message,
-					icon: 'error',
+					title: res.data.message,
+					icon: 'none',
 					duration: 1000
 				})
 			}
