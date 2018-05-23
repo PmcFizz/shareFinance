@@ -26,6 +26,7 @@ Page({
 			})
 			return false
 		}
+		// TODO 验证手机号或邮箱
 		var sendDta = {
 			suggest: this.data.suggest,
 			email: this.data.email

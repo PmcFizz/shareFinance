@@ -80,6 +80,7 @@ Page({
 			})
 			return false
 		}
+		// TODO 验证本金是大于10万的数字
 		var sendData = {
 			code: this.data.code,
 			money: this.data.money,

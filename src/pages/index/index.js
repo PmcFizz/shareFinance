@@ -53,6 +53,9 @@ Page({
 			})
 			return false
 		}
+		// TODO 验证手机号
+
+
 		var sendData = {
 			account: this.data.account,
 			pwd: this.data.pwd,
