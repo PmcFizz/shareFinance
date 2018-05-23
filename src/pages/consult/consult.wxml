@@ -1,4 +1,3 @@
-<!--index.wxml-->
 <view class="consult">
 	<view class="consults">
 		<textarea class="consult-txt" bindinput="suggestInput" placeholder="请输入留言内容，我们将尽快联系您">
