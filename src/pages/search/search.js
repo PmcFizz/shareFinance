@@ -3,6 +3,7 @@ var app = getApp()
 Page({
 	data: {
 		code: '',
+		stockName: '中国平安',
 		money: '',
 		days: '30',
 		qixian: [
@@ -15,7 +16,9 @@ Page({
 			{'name': '30万', 'value': '30'},
 			{'name': '100万', 'value': '100'},
 			{'name': '50万', 'value': '50'},
-			{'name': '300万', 'value': '300'}],
+			{'name': '300万', 'value': '300'},
+			{'name': '700万', 'value': '300'},
+			{'name': '800万', 'value': '300'}],
 		userInfo: {}
 	},
 	onLoad: function () {

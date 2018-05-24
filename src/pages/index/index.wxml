@@ -9,7 +9,7 @@
 	</view>
 	<view class='middle'>
 		<view class='mid_img'>
-			<image class='user-img' src='/image/icon_tel.png'></image>
+			<image class='user-img' src='/image/icon_pwd.png'></image>
 		</view>
 		<view class='mid_input'>
 			<input class='user' type='number' value="{{phone}}" bindinput="phoneInput" placeholder="请输入11位手机号" placeholder-class="phcolor" maxlength='11'/>
@@ -17,10 +17,13 @@
 	</view>
 	<view class="middle">
 		<view class="mid_img">
-			<image class="user-img" src=""></image>
+			<image class="user-img" src="/image/icon_ver.png"></image>
 		</view>
 		<view class="mid_input">
 			<input type="text" type="number" value="{{code}}" bindinput="codeInput" placeholder="请输入验证码" placeholder-class="phcolor" maxlength='6'/>
+		</view>
+		<view class="vercode" >
+			<image bindtap = "changeCode" src="{{codePath}}"></image>
 		</view>
 	</view>
 	<view class="button-wrap">

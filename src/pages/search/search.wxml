@@ -3,6 +3,7 @@
 	<view class="search-con u-flex">
 		<text class="tits">标的股票：</text>
 		<input type="text" placeholder="请输入6位股票代码" bindinput="codeInput" class="input-txt u-flex-item"></input>
+		<text class="stock-name">{{stockName}}</text>
 	</view>
 	<view class="search-con u-flex">
 		<text class="tits">合约期限:</text>

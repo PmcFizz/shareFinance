@@ -4,6 +4,7 @@
 .search-con {
 	padding: 10px;
 	font-size: 16px;
+	position: relative;
 	.tits {
 		line-height: 32px;
 	}
@@ -14,6 +15,12 @@
 		text-indent: 1em;
 	}
 
+	.stock-name {
+		position: absolute;
+		top: 10px;
+		right: 15px;
+		line-height: 32px;
+	}
 	.item-wrap {
 		padding: 0 5px;
 		position: relative;

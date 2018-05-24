@@ -4,9 +4,10 @@ var app = getApp()
 Page({
 	data: {
 		userInfo: {},
-		account: '1',
-		phone: '1',
-		code: '1'
+		account: '',
+		phone: '',
+		code: '',
+		codePath:'https://www.iwin8.cc/captcha.jpg'
 	},
 	onLoad: function () {
 		// app.login({account: 1, pwd: 2}, function (res) {
@@ -27,6 +28,15 @@ Page({
 		this.setData({
 			code: e.detail.value
 		})
+	},
+	changeCode: function () {
+		let imsrc = 'https://www.iwin8.cc/captcha.jpg?tid=' +  Math.random();
+		console.log(imsrc)
+		this.setData({
+			codePath: imsrc
+		})
+
+
 	},
 	login: function () {
 		if (!this.data.account) {
