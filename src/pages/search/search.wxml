@@ -2,14 +2,14 @@
 <view class="search">
 	<view class="search-con u-flex">
 		<text class="tits">标的股票：</text>
-		<input type="text" placeholder="请输入6位股票代码" bindinput="codeInput" class="input-txt u-flex-item"></input>
+		<input type="number" maxlength="6" value="{{code}}" placeholder="请输入6位股票代码" bindinput="codeInput" class="input-txt u-flex-item"></input>
 		<text class="stock-name">{{stockName}}</text>
 	</view>
 	<view class="search-con u-flex">
 		<text class="tits">合约期限:</text>
 		<view class="item-wrap u-flex-item u-clearfix">
-			<text bindtap="tapHeYue" class="{{item.value==days ? 'choose-item u-fl-l active' : 'choose-item u-fl-l' }}"
-				  data-value="{{item.value}}" wx:key="item" wx:for="{{qixian}}">{{item.name}}</text>
+			<text bindtap="tapHeYue" class="{{item == days ? 'choose-item u-fl-l active' : 'choose-item u-fl-l' }}"
+				  data-value="{{item}}" wx:key="item" wx:for="{{qixian}}">{{item}}天</text>
 		</view>
 	</view>
 	<view class="search-con u-flex">

@@ -5,7 +5,7 @@ Page({
 	data: {
 		userInfo: {},
 		account: '',
-		phone: '',
+		pwd: '',
 		code: '',
 		codePath:'https://www.iwin8.cc/captcha.jpg'
 	},
@@ -21,7 +21,7 @@ Page({
 	},
 	phoneInput: function (e) {
 		this.setData({
-			phone: e.detail.value
+			pwd: e.detail.value
 		})
 	},
 	codeInput: function (e) {
@@ -30,7 +30,7 @@ Page({
 		})
 	},
 	changeCode: function () {
-		let imsrc = 'https://www.iwin8.cc/captcha.jpg?tid=' +  Math.random();
+		var imsrc = 'https://www.iwin8.cc/captcha.jpg?tid=' +  Math.random();
 		this.setData({
 			codePath: imsrc
 		})
@@ -46,9 +46,10 @@ Page({
 			})
 			return false
 		}
-		if (!this.data.phone) {
+		console.log(`密码${this.data.pwd}`)
+		if (!this.data.pwd) {
 			wx.showToast({
-				title: '请填写手机号',
+				title: '请填写密码',
 				icon: 'none',
 				duration: 1000
 			})
@@ -62,24 +63,26 @@ Page({
 			})
 			return false
 		}
-		// TODO 验证手机号
-
+		// TODO 验证手机号 mobile|password|identCode
+		console.log()
 		var sendData = {
-			account: this.data.account,
-			pwd: this.data.pwd,
-			code: this.data.code
+			mobile: this.data.account,
+			password: this.data.pwd,
+			identCode: this.data.code
 		}
 		app.login(sendData, function (res) {
-			if (res.data.code === 0) {
+			console.log(res);
+			if (res.data.code == 200) {
 				wx.switchTab({
 					url: '../search/search',
 				})
 			} else {
+				console.log(res.data)
 				wx.showToast({
-					title: res.data.message,
-					icon: 'error',
-					duration: 1000
-				})
+					title: res.data.msg,
+					icon: 'none',
+					duration: 3000
+			})
 			}
 		})
 	}

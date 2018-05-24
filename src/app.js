@@ -1,6 +1,6 @@
 //app.js
 App({
-	serverHost: 'https://www.easy-mock.com/mock/5b0500231d17152ac64cec6e', // 服务器Host
+	serverHost: 'https://www.iwin8.cc', // 服务器Host
 	onLaunch: function () {
 	},
 	globalData: {
@@ -9,11 +9,11 @@ App({
 	// 登录
 	login: function (data, cb) {
 		wx.request({
-			url: this.serverHost + '/login',
+			url: this.serverHost + '/module/agent/login.do',
 			data: data,
-			method: 'POST',
+			method: 'GET',
 			success: function (res) {
-				if (res.data.code == 0) {
+				if (res.statusCode === 200) {
 					typeof cb == 'function' && cb(res)
 				}
 			}
@@ -22,11 +22,11 @@ App({
 	// 获取搜索条件
 	getSearchData: function (data, cb) {
 		wx.request({
-			url: this.serverHost + '/getsearchData',
+			url: this.serverHost + '/module/dictData/getTerm.do',
 			data: data,
 			method: 'GET',
 			success: function (res) {
-				if (res.data.code == 0) {
+				if (res.statusCode === 200) {
 					typeof cb == 'function' && cb(res)
 				}
 			}
@@ -35,11 +35,11 @@ App({
 	// 根据股票代码查询股票名字
 	getStockName: function (data, cb) {
 		wx.request({
-			url: this.serverHost + '/getStockName',
+			url: this.serverHost + '/module/option/getName.do',
 			data: data,
 			method: 'GET',
 			success: function (res) {
-				if (res.data.code == 0) {
+				if (res.statusCode === 200) {
 					typeof cb == 'function' && cb(res)
 				}
 			}
@@ -48,11 +48,11 @@ App({
 	// 查询价格
 	searchPrice: function (data, cb) {
 		wx.request({
-			url: this.serverHost + '/searchPrice',
+			url: this.serverHost + '/module/option/getOption.do',
 			data: data,
 			method: 'GET',
 			success: function (res) {
-				if (res.data.code == 0) {
+				if (res.statusCode === 200) {
 					typeof cb == 'function' && cb(res)
 				}
 			}
@@ -65,7 +65,7 @@ App({
 			data: data,
 			method: 'POST',
 			success: function (res) {
-				if (res.data.code == 0) {
+				if (res.statusCode === 200) {
 					typeof cb == 'function' && cb(res)
 				}
 			}

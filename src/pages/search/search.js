@@ -3,34 +3,47 @@ var app = getApp()
 Page({
 	data: {
 		code: '',
-		stockName: '中国平安',
+		stockName: '',
 		money: '',
 		days: '30',
-		qixian: [
-			{'name': '15天', 'value': '15'},
-			{'name': '30天', 'value': '30'},
-			{'name': '90天', 'value': '90'}],
+		qixian: [],
 		benjin: [
 			{'name': '10万', 'value': '10'},
 			{'name': '20万', 'value': '20'},
-			{'name': '30万', 'value': '30'}],
+			{'name': '30万', 'value': '30'},
+			{'name': '50万', 'value': '50'},
+			{'name': '100万', 'value': '100'},
+			{'name': '200万', 'value': '200'}
+			],
 		userInfo: {}
 	},
 	onLoad: function () {
 		var that = this
 		app.getSearchData({}, function (res) {
-			if (res.data.code === 0) {
-				var qx = res.data.data.qixian
-				var bj = res.data.data.benjin
-				that.setData({qixian: qx})
-				that.setData({benjin: bj})
-			} else {
-				wx.showToast({
-					title: res.data.data.message,
-					icon: 'none',
-					duration: 1000
-				})
+			console.log(res.data);
+			if(res.data){
+				if(res.data.termList.length > 0) {
+					var qx = res.data.termList
+					that.setData({qixian: qx})
+				} else {
+					wx.showToast({
+						title: '系统出错',
+						icon: 'none',
+						duration: 2000
+					})
+				}
+
 			}
+			// if (res.data.code == 200) {
+			// 	var qx = res.data.termList
+			// 	that.setData({qixian: qx})
+			// } else {
+			// 	wx.showToast({
+			// 		title: res.data.msg,
+			// 		icon: 'none',
+			// 		duration: 1000
+			// 	})
+			// }
 		})
 	},
 	codeInput: function (e) {
@@ -38,9 +51,14 @@ Page({
 			code: e.detail.value
 		})
 
-		if(e.detail.value.length == 6) {
-
-
+		if(e.detail.value.length > 2) {
+			this.matchStock({
+				code: e.detail.value
+			})
+		}else {
+			this.setData({
+				stockName: ''
+			})
 		}
 
 	},
@@ -50,9 +68,21 @@ Page({
 		})
 	},
 	matchStock: function (code) {
-		app.getStockName(code, function () {
-			if (res.data.code === 0) {
-				console.log(res)
+		var _this = this
+		app.getStockName(code, function (res) {
+			console.log(res.data.optionList);
+			if(res.data) {
+				if(res.data.optionList.length > 0) {
+					console.log(res.data.optionList[0].optionName)
+					_this.setData({
+						stockName: res.data.optionList[0].optionName
+					})
+				}else {
+					_this.setData({
+						stockName: ''
+					})
+				}
+
 			}
 		})
 	},
@@ -101,7 +131,7 @@ Page({
 		}
 
 		wx.navigateTo({
-			url: '../serch_result/serch_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days,
+			url: '../serch_result/serch_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days
 		})
 		// app.searchPrice(sendData, function (res) {
 		// 	if (res.data.code === 0) {
