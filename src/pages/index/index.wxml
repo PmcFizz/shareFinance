@@ -4,7 +4,7 @@
 			<image class='user-img' src='/image/icon_user.png'></image>
 		</view>
 		<view class='mid_input'>
-			<input class='user' type='text' value="{{account}}" bindinput="nameInput" placeholder="请输入姓名" placeholder-class="phcolor" />
+			<input class='user' type='text' value="{{account}}" bindinput="nameInput" placeholder="请输入姓名" placeholder-class="phcolor" maxlength="20"/>
 		</view>
 	</view>
 	<view class='middle'>
@@ -12,7 +12,7 @@
 			<image class='user-img' src='/image/icon_pwd.png'></image>
 		</view>
 		<view class='mid_input'>
-			<input class='user' type='number' value="{{phone}}" bindinput="phoneInput" placeholder="请输入11位手机号" placeholder-class="phcolor" maxlength='11'/>
+			<input class='user' type='password' value="{{phone}}" bindinput="phoneInput" placeholder="请输入密码" placeholder-class="phcolor" maxlength='11'/>
 		</view>
 	</view>
 	<view class="middle">
@@ -20,7 +20,7 @@
 			<image class="user-img" src="/image/icon_ver.png"></image>
 		</view>
 		<view class="mid_input">
-			<input type="text" type="number" value="{{code}}" bindinput="codeInput" placeholder="请输入验证码" placeholder-class="phcolor" maxlength='6'/>
+			<input type="text" value="{{code}}" bindinput="codeInput" placeholder="请输入验证码" placeholder-class="phcolor" maxlength='6'/>
 		</view>
 		<view class="vercode" >
 			<image bindtap = "changeCode" src="{{codePath}}"></image>
