@@ -31,7 +31,6 @@ Page({
 	},
 	changeCode: function () {
 		let imsrc = 'https://www.iwin8.cc/captcha.jpg?tid=' +  Math.random();
-		console.log(imsrc)
 		this.setData({
 			codePath: imsrc
 		})

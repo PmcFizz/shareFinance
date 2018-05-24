@@ -32,6 +32,19 @@ App({
 			}
 		})
 	},
+	// 根据股票代码查询股票名字
+	getStockName: function (data, cb) {
+		wx.request({
+			url: this.serverHost + '/getStockName',
+			data: data,
+			method: 'GET',
+			success: function (res) {
+				if (res.data.code == 0) {
+					typeof cb == 'function' && cb(res)
+				}
+			}
+		})
+	},
 	// 查询价格
 	searchPrice: function (data, cb) {
 		wx.request({

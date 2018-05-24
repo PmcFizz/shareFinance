@@ -13,12 +13,7 @@ Page({
 		benjin: [
 			{'name': '10万', 'value': '10'},
 			{'name': '20万', 'value': '20'},
-			{'name': '30万', 'value': '30'},
-			{'name': '100万', 'value': '100'},
-			{'name': '50万', 'value': '50'},
-			{'name': '300万', 'value': '300'},
-			{'name': '700万', 'value': '300'},
-			{'name': '800万', 'value': '300'}],
+			{'name': '30万', 'value': '30'}],
 		userInfo: {}
 	},
 	onLoad: function () {
@@ -42,10 +37,23 @@ Page({
 		this.setData({
 			code: e.detail.value
 		})
+
+		if(e.detail.value.length == 6) {
+
+
+		}
+
 	},
 	moneyInput: function (e) {
 		this.setData({
 			money: e.detail.value
+		})
+	},
+	matchStock: function (code) {
+		app.getStockName(code, function () {
+			if (res.data.code === 0) {
+				console.log(res)
+			}
 		})
 	},
 	tapHeYue: function (item) {
@@ -60,6 +68,7 @@ Page({
 		})
 	},
 	doSearch: function () {
+		var _this = this;
 		if (!this.data.code) {
 			wx.showToast({
 				title: '请填写您搜索的股票代码',
@@ -90,23 +99,25 @@ Page({
 			money: this.data.money,
 			days: this.data.days
 		}
-		app.searchPrice(sendData, function (res) {
-			if (res.data.code === 0) {
-				wx.showToast({
-					title: '查询成功',
-					icon: 'success',
-					duration: 1000
-				})
-			} else {
-				wx.showToast({
-					title: res.data.message,
-					icon: 'none',
-					duration: 1000
-				})
-			}
-			wx.navigateTo({
-				url: '../serch_result/serch_result',
-			})
+
+		wx.navigateTo({
+			url: '../serch_result/serch_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days,
 		})
+		// app.searchPrice(sendData, function (res) {
+		// 	if (res.data.code === 0) {
+		// 		wx.showToast({
+		// 			title: '查询成功',
+		// 			icon: 'success',
+		// 			duration: 1000
+		// 		})
+		// 	} else {
+		// 		wx.showToast({
+		// 			title: res.data.message,
+		// 			icon: 'none',
+		// 			duration: 1000
+		// 		})
+		// 	}
+		//
+		// })
 	}
 })
