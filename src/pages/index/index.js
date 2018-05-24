@@ -4,9 +4,9 @@ var app = getApp()
 Page({
 	data: {
 		userInfo: {},
-		account: '',
-		phone: '',
-		code: ''
+		account: '1',
+		phone: '1',
+		code: '1'
 	},
 	onLoad: function () {
 		// app.login({account: 1, pwd: 2}, function (res) {
@@ -54,7 +54,6 @@ Page({
 			return false
 		}
 		// TODO 验证手机号
-
 
 		var sendData = {
 			account: this.data.account,

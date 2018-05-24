@@ -46,13 +46,14 @@ Page({
 		})
 	},
 	tapHeYue: function (item) {
+		console.log(item)
 		this.setData({
-			days: item.value
+			days: item.target.dataset.value
 		})
 	},
 	tapBenJin: function (item) {
 		this.setData({
-			money: item.value
+			money: item.target.dataset.value
 		})
 	},
 	doSearch: function () {
