@@ -7,12 +7,12 @@ Page({
 		account: '',
 		phone: '',
 		code: '',
-		codePath:'https://www.iwin8.cc/captcha.jpg'
+		codePath: 'https://www.iwin8.cc/captcha.jpg'
 	},
 	onLoad: function () {
-		// app.login({account: 1, pwd: 2}, function (res) {
-		// 	console.log(res)
-		// })
+		app.getUserInfo(function (res) {
+			console.log(res)
+		})
 	},
 	nameInput: function (e) {
 		this.setData({
@@ -30,12 +30,10 @@ Page({
 		})
 	},
 	changeCode: function () {
-		let imsrc = 'https://www.iwin8.cc/captcha.jpg?tid=' +  Math.random();
+		var imsrc = 'https://www.iwin8.cc/captcha.jpg?tid=' + Math.random()
 		this.setData({
 			codePath: imsrc
 		})
-
-
 	},
 	login: function () {
 		if (!this.data.account) {
@@ -48,7 +46,7 @@ Page({
 		}
 		if (!this.data.phone) {
 			wx.showToast({
-				title: '请填写手机号',
+				title: '请填写密码',
 				icon: 'none',
 				duration: 1000
 			})
@@ -62,7 +60,6 @@ Page({
 			})
 			return false
 		}
-		// TODO 验证手机号
 
 		var sendData = {
 			account: this.data.account,

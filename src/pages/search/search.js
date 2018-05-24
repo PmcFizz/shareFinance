@@ -38,8 +38,7 @@ Page({
 			code: e.detail.value
 		})
 
-		if(e.detail.value.length == 6) {
-
+		if (e.detail.value.length == 6) {
 
 		}
 
@@ -68,7 +67,7 @@ Page({
 		})
 	},
 	doSearch: function () {
-		var _this = this;
+		var _this = this
 		if (!this.data.code) {
 			wx.showToast({
 				title: '请填写您搜索的股票代码',
@@ -101,23 +100,7 @@ Page({
 		}
 
 		wx.navigateTo({
-			url: '../serch_result/serch_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days,
+			url: '../search_result/search_result?code=' + _this.data.code + '&money=' + _this.data.money + '&days=' + _this.data.days,
 		})
-		// app.searchPrice(sendData, function (res) {
-		// 	if (res.data.code === 0) {
-		// 		wx.showToast({
-		// 			title: '查询成功',
-		// 			icon: 'success',
-		// 			duration: 1000
-		// 		})
-		// 	} else {
-		// 		wx.showToast({
-		// 			title: res.data.message,
-		// 			icon: 'none',
-		// 			duration: 1000
-		// 		})
-		// 	}
-		//
-		// })
 	}
 })

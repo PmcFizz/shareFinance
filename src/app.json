@@ -3,7 +3,7 @@
         "pages/index/index",
         "pages/consult/consult",
         "pages/search/search",
-        "pages/serch_result/serch_result"
+        "pages/search_result/search_result"
     ],
     "window": {
         "navigationBarTextStyle": "black",
