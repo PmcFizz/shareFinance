@@ -1,4 +1,5 @@
 var app = getApp()
+var util = require("../../utils/util.js");
 Page({
 	data: {
 		infoData: {
@@ -23,6 +24,10 @@ Page({
 		this.setData({
 			quanyi: qy
 		})
+		//格式化日期
+		infos.startTime = util.format(new Date(infos.startTime),"yyyy年MM月dd日");
+		infos.endTime = util.format(new Date(infos.endTime),"yyyy年MM月dd日");
+		console.log(infos.startTime);
 		//显示数据详情
 		this.setData({
 			infoData : infos

@@ -1,0 +1,10 @@
+测试账户： 88888888888 密码 123
+查询股票 000001 15天期能出来正确数据
+
+测试 host地址  https://www.iwin8.cc
+接口 200为正常 其他带有msg
+1. 获取session存储   /module/agent/getSessionId.do 无参数
+2.登录接口         /module/agent/login.do
+3.根据股票代码查询股票名字 /module/option/getName.do  参数 code  optionName
+4. 获取期权限时间接口 /module/dictData/getTerm.do   返回termList数组
+5. 查询价格  /module/option/getOption.do   参数code, term  返回 option
