@@ -2,15 +2,15 @@
 	<view class="result-content u-ul ">
 		<view class="u-li u-clearfix">
 			<text class=" u-fl-l">标的股票</text>
-			<text class="u-fl-r">{{infoData.name}} {{infoData.code}}</text>
+			<text class="u-fl-r">{{infoData.optionCode}} {{infoData.optionName}}</text>
 		</view>
 		<view class="u-li u-clearfix">
 			<text class="u-fl-l">名义本金</text>
-			<text class="u-fl-r">{{infoData.benjin}}</text>
+			<text class="u-fl-r">{{money}}万元</text>
 		</view>
 		<view class="u-li u-clearfix">
 			<text class="u-fl-l">合约期限</text>
-			<text class="u-fl-r">{{infoData.qixian}}</text>
+			<text class="u-fl-r">{{infoData.term}}天</text>
 		</view>
 		<view class="u-li u-clearfix">
 			<text class="u-fl-l">起始日期</text>
@@ -20,10 +20,14 @@
 			<text class="u-fl-l">到期日期</text>
 			<text class="u-fl-r">{{infoData.endTime}}</text>
 		</view>
+		<view class="u-li u-clearfix">
+			<text class="u-fl-l">权益金</text>
+			<text class="u-fl-r">{{quanyi}}元</text>
+		</view>
 	</view>
 	<view class="profit-price">
-		<text class="u-fl-l">盈利定价</text>
-		<text class="percents u-fl-r">{{infoData.price}}</text>
+		<text class="u-fl-l">期权费率</text>
+		<text class="percents u-fl-r">{{infoData.price * 100}}%</text>
 	</view>
 	<view class="button-wrap">
 		<button class="consult-btn" bindtap="searchAgin">继续询价</button>

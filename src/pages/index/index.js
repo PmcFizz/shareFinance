@@ -10,9 +10,9 @@ Page({
 		codePath:'https://www.iwin8.cc/captcha.jpg'
 	},
 	onLoad: function () {
-		// app.login({account: 1, pwd: 2}, function (res) {
-		// 	console.log(res)
-		// })
+		app.getUserInfo(function (res) {
+			console.log(res)
+		})
 	},
 	nameInput: function (e) {
 		this.setData({

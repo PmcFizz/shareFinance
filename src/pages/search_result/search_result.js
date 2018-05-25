@@ -10,37 +10,27 @@ Page({
 		}
 	},
 	onLoad: function (option) {
+		var infos = wx.getStorageSync('serchData'), qy
 		this.setData({money: option.money})
 		this.setData({
 			search: {
 				code:  option.code,
 				term:  option.days
 			}
-		});
-
-		console.log(this.data.search)
-		wx.showLoading({
-			title: '加载中',
 		})
-		this.getSearchResult(this.data.search);
+		//计算权益金
+		qy = (infos.price * option.money * 10000).toFixed(2);
+		this.setData({
+			quanyi: qy
+		})
+		//显示数据详情
+		this.setData({
+			infoData : infos
+		})
 	},
 	searchAgin: function () {
 		wx.switchTab({
 			url: '../search/search'
-		})
-	},
-	getSearchResult: function (option) {
-		var _self = this
-		app.searchPrice(option, function (res) {
-			if (res.data.code === 0) {
-				_self.setData({infoData: res.data.data})
-			} else {
-				wx.showToast({
-					title: res.data.message,
-					icon: 'none',
-					duration: 1000
-				})
-			}
 		})
 	}
 })

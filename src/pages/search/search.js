@@ -5,7 +5,7 @@ Page({
 		code: '',
 		stockName: '',
 		money: '',
-		days: '30',
+		days: '15',
 		qixian: [],
 		benjin: [
 			{'name': '10万', 'value': '10'},
@@ -15,6 +15,7 @@ Page({
 			{'name': '100万', 'value': '100'},
 			{'name': '200万', 'value': '200'}
 			],
+		searchData: {},
 		userInfo: {}
 	},
 	onLoad: function () {
@@ -34,16 +35,6 @@ Page({
 				}
 
 			}
-			// if (res.data.code == 200) {
-			// 	var qx = res.data.termList
-			// 	that.setData({qixian: qx})
-			// } else {
-			// 	wx.showToast({
-			// 		title: res.data.msg,
-			// 		icon: 'none',
-			// 		duration: 1000
-			// 	})
-			// }
 		})
 	},
 	codeInput: function (e) {
@@ -134,28 +125,24 @@ Page({
 		// TODO 验证本金是大于10万的数字
 		var sendData = {
 			code: this.data.code,
-			money: this.data.money,
-			days: this.data.days
+			term: this.data.days
 		}
-
-		wx.navigateTo({
-			url: '../serch_result/serch_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days
+		app.searchPrice(sendData, function (res) {
+			if (res.data.code == 200) {
+				console.log(res.data.option)
+				_this.setData({searchData: res.data.option})
+				wx.setStorageSync('serchData', res.data.option);
+				wx.navigateTo({
+					url: '../search_result/search_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days
+				})
+			} else {
+				wx.showToast({
+					title: res.data.msg,
+					icon: 'none',
+					duration: 1000
+				})
+			}
 		})
-		// app.searchPrice(sendData, function (res) {
-		// 	if (res.data.code === 0) {
-		// 		wx.showToast({
-		// 			title: '查询成功',
-		// 			icon: 'success',
-		// 			duration: 1000
-		// 		})
-		// 	} else {
-		// 		wx.showToast({
-		// 			title: res.data.message,
-		// 			icon: 'none',
-		// 			duration: 1000
-		// 		})
-		// 	}
-		//
-		// })
+
 	}
 })
