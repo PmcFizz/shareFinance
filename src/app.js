@@ -1,29 +1,27 @@
 //app.js
-var cookiekey = wx.getStorageSync('cookiekey');
-var header = {};
-if(cookiekey){
-	header.Cookie = cookiekey
-}
+
 App({
 	serverHost: 'https://www.iwin8.cc', // 服务器Host
 	onLaunch: function () {
-		this.getSession({},function (res) {
-			console.log(res.data);
-			if(res.data){
-				wx.setStorageSync('cookieKey', res.data.sessionId);//保存Cookie到Storage
+		var _self = this
+		this.getSession({}, function (res) {
+			if (res.data) {
+				_self.globalData.sessionId = res.data.sessionId
 			}
 		})
 	},
-
+	// 全局数据
 	globalData: {
-		userInfo: null
+		userInfo: null,
+		sessionId: ''
 	},
 	// 登录
 	login: function (data, cb) {
+		var sessionId = this.globalData.sessionId
 		wx.request({
 			url: this.serverHost + '/module/agent/login.do',
 			data: data,
-			header: header,
+			header: {sessionId},
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -32,7 +30,8 @@ App({
 			}
 		})
 	},
-	getSession: function (data,cb) {
+	// 获取sessionId
+	getSession: function (data, cb) {
 		wx.request({
 			url: this.serverHost + '/module/agent/getSessionId.do',
 			data: data,
@@ -46,10 +45,11 @@ App({
 	},
 	// 获取搜索条件
 	getSearchData: function (data, cb) {
+		var sessionId = this.globalData.sessionId
 		wx.request({
 			url: this.serverHost + '/module/dictData/getTerm.do',
 			data: data,
-			header: header,
+			header: {sessionId},
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -60,10 +60,11 @@ App({
 	},
 	// 根据股票代码查询股票名字
 	getStockName: function (data, cb) {
+		var sessionId = this.globalData.sessionId
 		wx.request({
 			url: this.serverHost + '/module/option/getName.do',
 			data: data,
-			header: header,
+			header: {sessionId},
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -74,10 +75,11 @@ App({
 	},
 	// 查询价格
 	searchPrice: function (data, cb) {
+		var sessionId = this.globalData.sessionId
 		wx.request({
 			url: this.serverHost + '/module/option/getOption.do',
 			data: data,
-			header: header,
+			header: {sessionId},
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -88,10 +90,11 @@ App({
 	},
 	// 联系我们
 	contentUs: function (data, cb) {
+		var sessionId = this.globalData.sessionId
 		wx.request({
 			url: this.serverHost + '/contactus',
 			data: data,
-			header: header,
+			header: {sessionId},
 			method: 'POST',
 			success: function (res) {
 				if (res.statusCode === 200) {

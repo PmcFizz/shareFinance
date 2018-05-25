@@ -46,7 +46,6 @@ Page({
 			})
 			return false
 		}
-		console.log(`密码${this.data.pwd}`)
 		if (!this.data.pwd) {
 			wx.showToast({
 				title: '请填写密码',
@@ -64,14 +63,12 @@ Page({
 			return false
 		}
 		// TODO 验证手机号 mobile|password|identCode
-		console.log()
 		var sendData = {
 			mobile: this.data.account,
 			password: this.data.pwd,
 			identCode: this.data.code
 		}
 		app.login(sendData, function (res) {
-			console.log(res);
 			if (res.data.code == 200) {
 				wx.switchTab({
 					url: '../search/search',

@@ -15,16 +15,16 @@ Page({
 			{'name': '50万', 'value': '50'},
 			{'name': '100万', 'value': '100'},
 			{'name': '200万', 'value': '200'}
-			],
+		],
 		searchData: {},
 		userInfo: {}
 	},
 	onLoad: function () {
 		var that = this
 		app.getSearchData({}, function (res) {
-			console.log(res.data);
-			if(res.data){
-				if(res.data.termList.length > 0) {
+			console.log(res.data)
+			if (res.data) {
+				if (res.data.termList.length > 0) {
 					var qx = res.data.termList
 					that.setData({qixian: qx})
 				} else {
@@ -39,7 +39,7 @@ Page({
 		})
 	},
 	codeInput: function (e) {
-		if(e.detail.value.toLowerCase().indexOf('st') > -1) {
+		if (e.detail.value.toLowerCase().indexOf('st') > -1) {
 			wx.showToast({
 				title: 'ST开头股票不做报价',
 				icon: 'none',
@@ -51,11 +51,11 @@ Page({
 			code: e.detail.value
 		})
 
-		if(e.detail.value.length > 2) {
+		if (e.detail.value.length > 2) {
 			this.matchStock({
 				code: e.detail.value
 			})
-		}else {
+		} else {
 			this.setData({
 				stockName: '',
 				stockList: []
@@ -71,9 +71,9 @@ Page({
 	matchStock: function (code) {
 		var _this = this
 		app.getStockName(code, function (res) {
-			console.log(res.data.optionList);
-			if(res.data) {
-				if(res.data.optionList.length > 0) {
+			console.log(res.data.optionList)
+			if (res.data) {
+				if (res.data.optionList.length > 0) {
 					console.log(res.data.optionList[0].optionName)
 					_this.setData({
 						stockName: res.data.optionList[0].optionName
@@ -81,7 +81,7 @@ Page({
 					_this.setData({
 						stockList: res.data.optionList
 					})
-				}else {
+				} else {
 					_this.setData({
 						stockName: ''
 					})
@@ -111,7 +111,7 @@ Page({
 		})
 	},
 	doSearch: function () {
-		var _this = this;
+		var _this = this
 		if (!this.data.code) {
 			wx.showToast({
 				title: '请填写您搜索的股票代码',
@@ -143,12 +143,18 @@ Page({
 		}
 		app.searchPrice(sendData, function (res) {
 			if (res.data.code == 200) {
-				console.log(res.data.option)
-				if(res.data.option) {
+				if (res.data.option) {
 					_this.setData({searchData: res.data.option})
-					wx.setStorageSync('serchData', res.data.option);
+					wx.setStorageSync('searchData', res.data.option)
 					wx.navigateTo({
-						url: '../search_result/search_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days
+						url: '../search_result/search_result?code=' + _this.data.code + '&money=' + _this.data.money + '&days=' + _this.data.days
+					})
+				} else {
+					wx.setStorageSync('searchData', '')
+					wx.showToast({
+						title: '没有查询到数据,请修改参数再试',
+						icon: 'none',
+						duration: 2000
 					})
 				}
 			} else {
