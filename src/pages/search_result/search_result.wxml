@@ -27,7 +27,7 @@
 	</view>
 	<view class="profit-price">
 		<text class="u-fl-l">期权费率</text>
-		<text class="percents u-fl-r">{{infoData.price * 100}}%</text>
+		<text class="percents u-fl-r">{{rate}}%</text>
 	</view>
 	<view class="button-wrap">
 		<button class="consult-btn" bindtap="searchAgin">继续询价</button>
