@@ -5,35 +5,33 @@ Page({
 		infoData: {
 			search: {},
 			money: '',
-			infoData: {
-			},
+			infoData: {},
 			quanyi: '', //权益
 			rate: '' //费率
 		}
 	},
 	onLoad: function (option) {
-		var infos = wx.getStorageSync('serchData'), qy, rates
+		var infos = wx.getStorageSync('searchData'), qy, rates
 		this.setData({money: option.money})
 		this.setData({
 			search: {
-				code:  option.code,
-				term:  option.days
+				code: option.code,
+				term: option.days
 			}
 		})
 		//计算权益金
-		qy = (infos.price * option.money * 10000).toFixed(2);
+		qy = (infos.price * option.money * 10000).toFixed(2)
 		rates = (infos.price * 100).toFixed(2);
 		this.setData({
 			quanyi: qy,
 			rate: rates
 		})
 		//格式化日期
-		infos.startTime = util.format(new Date(infos.startTime),"yyyy年MM月dd日");
-		infos.endTime = util.format(new Date(infos.endTime),"yyyy年MM月dd日");
-		console.log(infos.startTime);
+		infos.startTime = util.format(new Date(infos.startTime), "yyyy年MM月dd日")
+		infos.endTime = util.format(new Date(infos.endTime), "yyyy年MM月dd日")
 		//显示数据详情
 		this.setData({
-			infoData : infos
+			infoData: infos
 		})
 	},
 	searchAgin: function () {

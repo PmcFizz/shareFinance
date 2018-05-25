@@ -7,9 +7,11 @@ Page({
 		account: '',
 		pwd: '',
 		code: '',
-		codePath: app.serverHost + '/captcha.jpg'
+		codePath: ''
 	},
 	onLoad: function () {
+		this.changeCode();
+		console.log('+++>登录获取图片')
 		app.getUserInfo(function (res) {
 			console.log(res)
 		})
@@ -30,12 +32,10 @@ Page({
 		})
 	},
 	changeCode: function () {
-		var imsrc = app.serverHost +'/captcha.jpg?tid=' +  Math.random();
+		var imsrc = app.serverHost +'/captcha.jpg?sessionId=' +  app.globalData.sessionId + '&tid' + Math.random() ;
 		this.setData({
 			codePath: imsrc
 		})
-
-
 	},
 	login: function () {
 		if (!this.data.account) {
@@ -67,7 +67,7 @@ Page({
 			mobile: this.data.account,
 			password: this.data.pwd,
 			identCode: this.data.code
-		}
+		}, _this = this
 		app.login(sendData, function (res) {
 			if (res.data.code == 200) {
 				wx.switchTab({
@@ -75,6 +75,9 @@ Page({
 				})
 			} else {
 				console.log(res.data)
+				if(res.data.msg == "验证码错误") {
+					_this.changeCode();
+				}
 				wx.showToast({
 					title: res.data.msg,
 					icon: 'none',

@@ -2,6 +2,7 @@
 	<view class="consults">
 		<textarea class="consult-txt" bindinput="suggestInput" value="{{suggest}}" placeholder="请输入留言内容，我们将尽快联系您">
 		</textarea>
+		<text class="input-limit">{{currentNoteLen|0}}/130个字</text>
 	</view>
 	<view class="contacts">
 		<input type="text" class="input-txt" bindinput="emailInput" value="{{email}}" placeholder="请输入电话或邮箱"/>

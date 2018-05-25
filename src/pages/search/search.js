@@ -3,7 +3,7 @@ var app = getApp()
 Page({
 	data: {
 		code: '',
-		stockName: '平安金融',
+		stockName: '',
 		stockList: [],
 		money: '',
 		days: '15',
@@ -24,17 +24,26 @@ Page({
 		app.getSearchData({}, function (res) {
 			console.log(res.data)
 			if (res.data) {
-				if (res.data.termList.length > 0) {
-					var qx = res.data.termList
-					that.setData({qixian: qx})
-				} else {
-					wx.showToast({
-						title: '系统出错',
-						icon: 'none',
-						duration: 2000
+				if(res.data.code == 1) {
+					console.log('未登录。。')
+					wx.redirectTo({
+						url: '../index/index'
 					})
+				} else if(res.data.code == 200) {
+					if (res.data.termList.length > 0) {
+						var qx = res.data.termList
+						console.log(res.data.listCode)
+						that.setData({qixian: qx,
+							days: qx[res.data.listCode]
+						})
+					} else {
+						wx.showToast({
+							title: '系统出错',
+							icon: 'none',
+							duration: 2000
+						})
+					}
 				}
-
 			}
 		})
 	},
@@ -50,7 +59,6 @@ Page({
 		this.setData({
 			code: e.detail.value
 		})
-
 		if (e.detail.value.length > 2) {
 			this.matchStock({
 				code: e.detail.value
@@ -73,19 +81,27 @@ Page({
 		app.getStockName(code, function (res) {
 			console.log(res.data.optionList)
 			if (res.data) {
-				if (res.data.optionList.length > 0) {
-					console.log(res.data.optionList[0].optionName)
-					_this.setData({
-						stockName: res.data.optionList[0].optionName
-					})
-					_this.setData({
-						stockList: res.data.optionList
+				if (res.data.code == 1) {
+					console.log('未登录。。')
+					wx.redirectTo({
+						url: '../index/index'
 					})
 				} else {
-					_this.setData({
-						stockName: ''
-					})
+					if (res.data.optionList.length > 0) {
+						console.log(res.data.optionList[0].optionName)
+						_this.setData({
+							stockName: res.data.optionList[0].optionName
+						})
+						_this.setData({
+							stockList: res.data.optionList
+						})
+					} else {
+						_this.setData({
+							stockName: ''
+						})
+					}
 				}
+
 
 			}
 		})
@@ -157,6 +173,12 @@ Page({
 						duration: 2000
 					})
 				}
+			} else if(res.data.code == 1) {
+				console.log('未登录。。')
+				wx.redirectTo({
+					url: '../index/index'
+				})
+
 			} else {
 				wx.showToast({
 					title: res.data.msg,
@@ -164,6 +186,7 @@ Page({
 					duration: 2000
 				})
 			}
+
 		})
 
 	}

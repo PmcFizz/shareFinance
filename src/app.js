@@ -92,7 +92,7 @@ App({
 	contentUs: function (data, cb) {
 		var sessionId = this.globalData.sessionId
 		wx.request({
-			url: this.serverHost + '/contactus',
+			url: this.serverHost + '/module/leaveWord/save.do',
 			data: data,
 			header: {'Cookie': 'JSESSIONID=' + sessionId },
 			method: 'POST',

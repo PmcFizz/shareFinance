@@ -12,7 +12,6 @@
 		border: 1px solid #f1f1f1;
 		padding: 5px;
 		line-height: 22px;
-		text-indent: 1em;
 	}
 
 	.stock-wrap {
@@ -26,9 +25,9 @@
 	}
 	.stock-name {
 		position: absolute;
-		top: 5px;
+		top: 0;
 		right: 15px;
-		line-height: 32px;
+		line-height: 38px;
 	}
 
 
@@ -68,9 +67,10 @@
 
 		.rule-txt {
 			position: absolute;
-			top: 10px;
+			top: 0;
 			right: 30px;
 			color: #333;
+			line-height: 38px;
 		}
 	}
 }

@@ -1,9 +1,9 @@
 {
     "pages": [
-
+        "pages/search/search",
         "pages/index/index",
         "pages/consult/consult",
-        "pages/search/search",
+
         "pages/search_result/search_result"
     ],
     "window": {

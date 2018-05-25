@@ -4,11 +4,21 @@
 .consults {
 	padding: 10px 30px;
 	font-size: 16px;
+	box-sizing: border-box;
+	position: relative;
 	.consult-txt {
-		width: 300px;
+		width: 100%;
 		border: 1px solid #f1f1f1;
 		padding: 5px;
 		line-height: 22px;
+		box-sizing: border-box;
+	}
+	.input-limit {
+		position: absolute;
+		right: 40px;
+		bottom: 15px;
+		font-size: 13px;
+		color: #888;
 	}
 }
 .contacts {

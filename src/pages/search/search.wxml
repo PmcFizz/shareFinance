@@ -15,9 +15,7 @@
 					</block>
 				</view>
 			</scroll-view>
-
 		</view>
-
 	</view>
 	<view class="search-con u-flex">
 		<text class="tits">合约期限:</text>
