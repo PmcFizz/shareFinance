@@ -2,7 +2,11 @@
 App({
 	serverHost: 'https://www.iwin8.cc', // 服务器Host
 	onLaunch: function () {
+		this.getSession(function (res) {
+			console.log(res);
+		})
 	},
+
 	globalData: {
 		userInfo: null
 	},
@@ -10,6 +14,18 @@ App({
 	login: function (data, cb) {
 		wx.request({
 			url: this.serverHost + '/module/agent/login.do',
+			data: data,
+			method: 'GET',
+			success: function (res) {
+				if (res.statusCode === 200) {
+					typeof cb == 'function' && cb(res)
+				}
+			}
+		})
+	},
+	getSession: function (data,cb) {
+		wx.request({
+			url: this.serverHost + '/module/agent/getSessionId.do',
 			data: data,
 			method: 'GET',
 			success: function (res) {
@@ -70,5 +86,26 @@ App({
 				}
 			}
 		})
+	},
+	// 获取当前用户信息
+	getUserInfo: function (cb) {
+		var that = this
+		if (this.globalData.userInfo) {
+			typeof cb == 'function' && cb(this.globalData.userInfo)
+		} else {
+			//调用登陆接口
+			wx.login({
+				success: function (loginRes) {
+					// 用户登录后获取code 回传开发服务器 获取openid
+					console.log(loginRes)
+					wx.getUserInfo({
+						success: function (res) {
+							that.globalData.userInfo = res.userInfo
+							typeof cb == 'function' && cb(that.globalData.userInfo)
+						}
+					})
+				}
+			})
+		}
 	}
 })
