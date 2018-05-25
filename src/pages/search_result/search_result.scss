@@ -1,0 +1,40 @@
+@import "../../assets/scss/support";
+
+.search_result {
+	background: #ccc;
+}
+
+.result-content {
+	padding:20px 20px 10px;
+	font-size: 14px;
+}
+
+
+.profit-price {
+	padding: 0 20px;
+	height: 80px;
+	line-height: 80px;
+	font-size: 14px;
+	border-top: 1px solid $colorGray;
+	.percents {
+		font-size: 30px;
+		color: $colorRed;
+	}
+}
+
+
+.button-wrap {
+	padding: 25px 30px;
+
+	.consult-btn {
+		margin: 0 auto;
+		width: 310px;
+		height: 40px;
+		background: $colorRed;
+		color: #ffffff;
+		font-size: 16px;
+		border-radius: 20px;
+		text-align: center;
+		line-height: 40px;
+	}
+}

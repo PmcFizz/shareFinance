@@ -47,6 +47,14 @@ Page({
 		})
 	},
 	codeInput: function (e) {
+		if(e.detail.value.toLowerCase().indexOf('st') > -1) {
+			wx.showToast({
+				title: 'ST开头股票不做报价',
+				icon: 'none',
+				duration: 2000
+			})
+			return
+		}
 		this.setData({
 			code: e.detail.value
 		})
