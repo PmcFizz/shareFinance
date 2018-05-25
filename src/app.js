@@ -1,9 +1,17 @@
 //app.js
+var cookiekey = wx.getStorageSync('cookiekey');
+var header = {};
+if(cookiekey){
+	header.Cookie = cookiekey
+}
 App({
 	serverHost: 'https://www.iwin8.cc', // 服务器Host
 	onLaunch: function () {
-		this.getSession(function (res) {
-			console.log(res);
+		this.getSession({},function (res) {
+			console.log(res.data);
+			if(res.data){
+				wx.setStorageSync('cookieKey', res.data.sessionId);//保存Cookie到Storage
+			}
 		})
 	},
 
@@ -15,6 +23,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/agent/login.do',
 			data: data,
+			header: header,
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -40,6 +49,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/dictData/getTerm.do',
 			data: data,
+			header: header,
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -53,6 +63,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/option/getName.do',
 			data: data,
+			header: header,
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -66,6 +77,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/option/getOption.do',
 			data: data,
+			header: header,
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -79,6 +91,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/contactus',
 			data: data,
+			header: header,
 			method: 'POST',
 			success: function (res) {
 				if (res.statusCode === 200) {

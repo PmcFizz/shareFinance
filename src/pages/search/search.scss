@@ -15,12 +15,35 @@
 		text-indent: 1em;
 	}
 
+	.stock-wrap {
+		position: relative;
+
+	}
+
+	.stock-con {
+		height: 240px;
+		border: 1px solid #b1b1b1;
+	}
 	.stock-name {
 		position: absolute;
-		top: 10px;
+		top: 5px;
 		right: 15px;
 		line-height: 32px;
 	}
+
+
+	/*股票匹配*/
+	.stock-match {
+		padding: 3px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background: #fff;
+		z-index: 20;
+		box-sizing: border-box;
+	}
+
 	.item-wrap {
 		padding: 0 5px;
 		position: relative;

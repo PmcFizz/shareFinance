@@ -6,6 +6,9 @@
 		<view class='mid_input'>
 			<input class='user' type='number' value="{{account}}" bindinput="nameInput" placeholder="请输入手机号码" placeholder-class="phcolor" maxlength="11"/>
 		</view>
+		<view class="match-wrap">
+
+		</view>
 	</view>
 	<view class='middle'>
 		<view class='mid_img'>

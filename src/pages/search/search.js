@@ -3,7 +3,8 @@ var app = getApp()
 Page({
 	data: {
 		code: '',
-		stockName: '',
+		stockName: '平安金融',
+		stockList: [],
 		money: '',
 		days: '15',
 		qixian: [],
@@ -56,7 +57,8 @@ Page({
 			})
 		}else {
 			this.setData({
-				stockName: ''
+				stockName: '',
+				stockList: []
 			})
 		}
 
@@ -76,6 +78,9 @@ Page({
 					_this.setData({
 						stockName: res.data.optionList[0].optionName
 					})
+					_this.setData({
+						stockList: res.data.optionList
+					})
 				}else {
 					_this.setData({
 						stockName: ''
@@ -83,6 +88,15 @@ Page({
 				}
 
 			}
+		})
+	},
+	tapStocks: function (item) {
+		console.log(item)
+		this.setData({
+			code: item.target.dataset.stockcode,
+			stockName: item.target.dataset.stockname,
+			days: item.target.dataset.term,
+			stockList: []
 		})
 	},
 	tapHeYue: function (item) {
@@ -130,16 +144,18 @@ Page({
 		app.searchPrice(sendData, function (res) {
 			if (res.data.code == 200) {
 				console.log(res.data.option)
-				_this.setData({searchData: res.data.option})
-				wx.setStorageSync('serchData', res.data.option);
-				wx.navigateTo({
-					url: '../search_result/search_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days
-				})
+				if(res.data.option) {
+					_this.setData({searchData: res.data.option})
+					wx.setStorageSync('serchData', res.data.option);
+					wx.navigateTo({
+						url: '../search_result/search_result?code=' + _this.data.code + "&money=" + _this.data.money + "&days=" + _this.data.days
+					})
+				}
 			} else {
 				wx.showToast({
 					title: res.data.msg,
 					icon: 'none',
-					duration: 1000
+					duration: 2000
 				})
 			}
 		})

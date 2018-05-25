@@ -7,7 +7,7 @@ Page({
 		account: '',
 		pwd: '',
 		code: '',
-		codePath:'https://www.iwin8.cc/captcha.jpg'
+		codePath: app.serverHost + '/captcha.jpg'
 	},
 	onLoad: function () {
 		app.getUserInfo(function (res) {
@@ -30,7 +30,7 @@ Page({
 		})
 	},
 	changeCode: function () {
-		var imsrc = 'https://www.iwin8.cc/captcha.jpg?tid=' +  Math.random();
+		var imsrc = app.serverHost +'/captcha.jpg?tid=' +  Math.random();
 		this.setData({
 			codePath: imsrc
 		})

@@ -2,8 +2,22 @@
 <view class="search">
 	<view class="search-con u-flex">
 		<text class="tits">标的股票：</text>
-		<input type="number" maxlength="6" value="{{code}}" placeholder="请输入6位股票代码" bindinput="codeInput" class="input-txt u-flex-item"></input>
-		<text class="stock-name">{{stockName}}</text>
+		<view class="stock-wrap  u-flex-item">
+			<input type="text" maxlength="6" value="{{code}}" placeholder="请输入6位股票代码" bindinput="codeInput" class="input-txt "></input>
+			<text class="stock-name">{{stockName}}</text>
+			<scroll-view scroll-y="true" wx:if="{{stockList.length != 0 }}" class="stock-con">
+				<view class="stock-match">
+					<block wx:for="{{stockList}}" wx:key = "{{item.optionCode}}">
+						<view class="u-li  u-clearfix" bindtap = "tapStocks" data-stockcode="{{item.optionCode}}" data-stockname = "{{item.optionName}}" data-term="{{item.term}}">
+							<text class=" u-fl-l">{{item.optionCode}}</text>
+							<text class="u-fl-r">{{item.optionName}}</text>
+						</view>
+					</block>
+				</view>
+			</scroll-view>
+
+		</view>
+
 	</view>
 	<view class="search-con u-flex">
 		<text class="tits">合约期限:</text>
