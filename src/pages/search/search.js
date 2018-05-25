@@ -93,9 +93,9 @@ Page({
 	tapStocks: function (item) {
 		console.log(item)
 		this.setData({
-			code: item.target.dataset.stockcode,
-			stockName: item.target.dataset.stockname,
-			days: item.target.dataset.term,
+			code: item.currentTarget.dataset.stockcode,
+			stockName: item.currentTarget.dataset.stockname,
+			days: item.currentTarget.dataset.term,
 			stockList: []
 		})
 	},
