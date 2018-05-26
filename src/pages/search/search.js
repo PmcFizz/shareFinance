@@ -5,7 +5,7 @@ Page({
 		code: '',
 		stockName: '',
 		stockList: [],
-		money: '20',
+		money: '10',
 		days: '',
 		qixian: [],
 		benjin: [
@@ -139,14 +139,6 @@ Page({
 			})
 			return false
 		}
-		if (!this.data.money) {
-			wx.showToast({
-				title: '请填写您的本金',
-				icon: 'none',
-				duration: 1000
-			})
-			return false
-		}
 		if (!this.data.days) {
 			wx.showToast({
 				title: '请填写您搜索的期限',
@@ -155,12 +147,31 @@ Page({
 			})
 			return false
 		}
+		if (!this.data.money) {
+			wx.showToast({
+				title: '请填写您的本金',
+				icon: 'none',
+				duration: 1000
+			})
+			return false
+		}
 		// TODO 验证本金是大于10万的数字
+		if (parseInt(this.data.money) < 10) {
+			wx.showToast({
+				title: '自定义金额10万元起',
+				icon: 'none',
+				duration: 1000
+			})
+			return false
+		}
+
 		var sendData = {
 			code: this.data.code,
 			term: this.data.days
 		}
+		wx.showLoading();
 		app.searchPrice(sendData, function (res) {
+			wx.hideLoading();
 			if (res.data.code == 200) {
 				if (res.data.option) {
 					_this.setData({searchData: res.data.option})
