@@ -109,8 +109,6 @@ Page({
 	},
 	tapStocks: function (item) {
 		console.log(item.currentTarget.dataset.stockcode)
-		var cod = (item.currentTarget.dataset.stockcode).slice(0,6)
-		console.log(cod);
 		this.setData({
 			code: item.currentTarget.dataset.stockcode,
 			stockName: item.currentTarget.dataset.stockname,
@@ -156,7 +154,7 @@ Page({
 			return false
 		}
 		// TODO 验证本金是大于10万的数字
-		if (parseInt(this.data.money) < 10) {
+		if (this.data.money && parseInt(this.data.money) < 10) {
 			wx.showToast({
 				title: '自定义金额10万元起',
 				icon: 'none',

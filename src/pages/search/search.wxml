@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="search">
 	<view class="search-con u-flex">
-		<text class="tits">标的股票：</text>
+		<text class="tits">标的股票:</text>
 		<view class="stock-wrap  u-flex-item">
 			<input type="text" maxlength="6" value="{{code}}" placeholder="请输入6位股票代码" bindinput="codeInput"  placeholder-class="pcolor"  class="input-txt "></input>
 			<text class="stock-name">{{stockName}}</text>
@@ -30,7 +30,7 @@
 			<text class="rule-txt">万元</text>
 			<input type="text" placeholder="自定义金额10万起" value="{{money}}" bindinput="moneyInput" placeholder-class="pcolor" class="input-txt"/>
 			<view class="item-contain">
-				<text class="choose-item u-fl-l" bindtap="tapBenJin"
+				<text  bindtap="tapBenJin"
 					  class="{{item.value==money ? 'choose-item u-fl-l active' : 'choose-item u-fl-l' }}"
 					  wx:key="item" wx:for="{{benjin}}" data-value="{{item.value}}">{{item.name}}</text>
 			</view>

@@ -13,19 +13,19 @@
         "backgroundColor": "#000"
     },
     "tabBar": {
-        "color": "#535353",
+        "color": "#b1b1b1",
         "selectedColor": "#fff",
         "borderStyle": "black",
         "backgroundColor": "#282828",
         "list": [{
             "pagePath": "pages/search/search",
-            "iconPath": "image/home_D.png",
-            "selectedIconPath": "image/home.png",
+            "iconPath": "image/search.png",
+            "selectedIconPath": "image/search_A.png",
             "text": "询价"
         },{
             "pagePath": "pages/consult/consult",
-            "iconPath": "image/set_D.png",
-            "selectedIconPath": "image/set.png",
+            "iconPath": "image/consult.png",
+            "selectedIconPath": "image/consult_A.png",
             "text": "联系我们"
         }]
     },

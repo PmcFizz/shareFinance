@@ -21,7 +21,7 @@ Page({
 		})
 		//计算权益金
 		qy = (infos.price * option.money * 10000).toFixed(2)
-		rates = (infos.price * 100).toFixed(2);
+		rates = (infos.price * 1).toFixed(2);
 		this.setData({
 			quanyi: qy,
 			rate: rates

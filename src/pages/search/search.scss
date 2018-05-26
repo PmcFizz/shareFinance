@@ -22,7 +22,7 @@
 	}
 	.stock-wrap {
 		position: relative;
-
+		padding: 0 5px;
 	}
 
 	.stock-con {
@@ -59,9 +59,10 @@
 			height: 30px;
 			line-height: 30px;
 			text-align: center;
+			color: #b1b1b1;
 			margin-right: 10px;
 			margin-bottom: 10px;
-			border: 1px solid #f1f1f1;
+			border: 1px solid #b1b1b1;
 			border-radius: 5px;
 		}
 
