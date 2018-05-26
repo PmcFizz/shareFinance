@@ -21,7 +21,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/agent/login.do',
 			data: data,
-			header: {'Cookie': 'JSESSIONID=' + sessionId },
+			header: {'Cookie': 'JSESSIONID=' + sessionId},
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -49,7 +49,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/dictData/getTerm.do',
 			data: data,
-			header: {'Cookie': 'JSESSIONID=' + sessionId },
+			header: {'Cookie': 'JSESSIONID=' + sessionId},
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -64,7 +64,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/option/getName.do',
 			data: data,
-			header: {'Cookie': 'JSESSIONID=' + sessionId },
+			header: {'Cookie': 'JSESSIONID=' + sessionId},
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -79,7 +79,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/option/getOption.do',
 			data: data,
-			header: {'Cookie': 'JSESSIONID=' + sessionId },
+			header: {'Cookie': 'JSESSIONID=' + sessionId},
 			method: 'GET',
 			success: function (res) {
 				if (res.statusCode === 200) {
@@ -94,7 +94,7 @@ App({
 		wx.request({
 			url: this.serverHost + '/module/leaveWord/save.do',
 			data: data,
-			header: {'Cookie': 'JSESSIONID=' + sessionId },
+			header: {'Cookie': 'JSESSIONID=' + sessionId},
 			method: 'POST',
 			success: function (res) {
 				if (res.statusCode === 200) {
