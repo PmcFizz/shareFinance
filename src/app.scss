@@ -18,6 +18,13 @@
 // 雪碧图
 @lazysprite "filetype";
 
+page {
+
+	background-color: #1b1b1b;
+
+	height:100%;
+
+}
 .test {
 	background-image: url(%ASSETS_IMG%/qr-r.jpg);
 }

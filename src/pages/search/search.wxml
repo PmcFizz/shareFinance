@@ -3,7 +3,7 @@
 	<view class="search-con u-flex">
 		<text class="tits">标的股票：</text>
 		<view class="stock-wrap  u-flex-item">
-			<input type="text" maxlength="6" value="{{code}}" placeholder="请输入6位股票代码" bindinput="codeInput" class="input-txt "></input>
+			<input type="text" maxlength="6" value="{{code}}" placeholder="请输入6位股票代码" bindinput="codeInput"  placeholder-class="pcolor"  class="input-txt "></input>
 			<text class="stock-name">{{stockName}}</text>
 			<scroll-view scroll-y="true" wx:if="{{stockList.length != 0 }}" class="stock-con">
 				<view class="stock-match">
@@ -28,7 +28,7 @@
 		<text class="tits">名义本金:</text>
 		<view class="item-wrap u-flex-item u-clearfix">
 			<text class="rule-txt">万元</text>
-			<input type="text" placeholder="自定义金额10万起" value="{{money}}" bindinput="moneyInput" class="input-txt"/>
+			<input type="text" placeholder="自定义金额10万起" value="{{money}}" bindinput="moneyInput" placeholder-class="pcolor" class="input-txt"/>
 			<view class="item-contain">
 				<text class="choose-item u-fl-l" bindtap="tapBenJin"
 					  class="{{item.value==money ? 'choose-item u-fl-l active' : 'choose-item u-fl-l' }}"

@@ -1,21 +1,26 @@
 @import "../../assets/scss/support";
 
 .search_result {
-	background: #ccc;
+	color: #fff;
 }
 
 .result-content {
 	padding:20px 20px 10px;
 	font-size: 14px;
+	background: #282828;
 }
 
+ .u-fl-l {
+	 color: #f3f3f3;
+ }
 
 .profit-price {
 	padding: 0 20px;
 	height: 80px;
 	line-height: 80px;
 	font-size: 14px;
-	border-top: 1px solid $colorGray;
+	border-top: 1px solid #f3f3f3;
+	background: #282828;
 	.percents {
 		font-size: 30px;
 		color: $colorRed;
@@ -30,11 +35,14 @@
 		margin: 0 auto;
 		width: 310px;
 		height: 40px;
-		background: $colorRed;
+		background: #ff3300;
 		color: #ffffff;
 		font-size: 16px;
-		border-radius: 20px;
+		border-radius: 10px;
 		text-align: center;
 		line-height: 40px;
+		&:active {
+			background: #FF4949;
+		}
 	}
 }

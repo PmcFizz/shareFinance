@@ -5,8 +5,8 @@ Page({
 		code: '',
 		stockName: '',
 		stockList: [],
-		money: '',
-		days: '15',
+		money: '20',
+		days: '',
 		qixian: [],
 		benjin: [
 			{'name': '10万', 'value': '10'},
@@ -97,7 +97,8 @@ Page({
 						})
 					} else {
 						_this.setData({
-							stockName: ''
+							stockName: '',
+							stockList: []
 						})
 					}
 				}
@@ -107,7 +108,9 @@ Page({
 		})
 	},
 	tapStocks: function (item) {
-		console.log(item)
+		console.log(item.currentTarget.dataset.stockcode)
+		var cod = (item.currentTarget.dataset.stockcode).slice(0,6)
+		console.log(cod);
 		this.setData({
 			code: item.currentTarget.dataset.stockcode,
 			stockName: item.currentTarget.dataset.stockname,

@@ -1,22 +1,22 @@
 {
     "pages": [
-        "pages/search/search",
+
         "pages/index/index",
         "pages/consult/consult",
-
+        "pages/search/search",
         "pages/search_result/search_result"
     ],
     "window": {
-        "navigationBarTextStyle": "black",
+        "navigationBarTextStyle": "white",
         "navigationBarTitleText": "股票查询",
-        "navigationBarBackgroundColor": "#fbf9fe",
-        "backgroundColor": "#fbf9fe"
+        "navigationBarBackgroundColor": "#000",
+        "backgroundColor": "#000"
     },
     "tabBar": {
-        "color": "#dddddd",
-        "selectedColor": "#f11",
+        "color": "#535353",
+        "selectedColor": "#fff",
         "borderStyle": "black",
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "#282828",
         "list": [{
             "pagePath": "pages/search/search",
             "iconPath": "image/home_D.png",

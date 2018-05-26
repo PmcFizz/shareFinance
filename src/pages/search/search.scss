@@ -3,8 +3,11 @@
 
 .search-con {
 	padding: 10px;
+	margin-bottom: 10px;
+	background: #282828;
 	font-size: 16px;
 	position: relative;
+	color: #fff;
 	.tits {
 		line-height: 32px;
 	}
@@ -14,6 +17,9 @@
 		line-height: 22px;
 	}
 
+	.pcolor {
+		color: #f1f1f1;
+	}
 	.stock-wrap {
 		position: relative;
 
@@ -38,7 +44,6 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		background: #fff;
 		z-index: 20;
 		box-sizing: border-box;
 	}
@@ -69,7 +74,7 @@
 			position: absolute;
 			top: 0;
 			right: 30px;
-			color: #333;
+			color: #f1f1f1;
 			line-height: 38px;
 		}
 	}
@@ -85,8 +90,11 @@
 		background: $colorRed;
 		color: #ffffff;
 		font-size: 16px;
-		border-radius: 20px;
+		border-radius: 10px;
 		text-align: center;
 		line-height: 40px;
+		&:active {
+			background: #FF4949;
+		}
 	}
 }
