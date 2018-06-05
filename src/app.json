@@ -1,6 +1,6 @@
 {
     "pages": [
-
+        "pages/contractSearch/contractSearch",
         "pages/index/index",
         "pages/consult/consult",
         "pages/search/search",
@@ -23,6 +23,12 @@
             "selectedIconPath": "image/search_A.png",
             "text": "询价"
         },{
+            "pagePath": "pages/contractSearch/contractSearch",
+            "iconPath": "image/search.png",
+            "selectedIconPath": "image/search_A.png",
+            "text": "合约查询"
+            },
+            {
             "pagePath": "pages/consult/consult",
             "iconPath": "image/consult.png",
             "selectedIconPath": "image/consult_A.png",

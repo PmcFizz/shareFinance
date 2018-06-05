@@ -1,0 +1,67 @@
+// 支持文件
+@import "../../assets/scss/support";
+
+.container{
+	color: #f1f1f1;
+
+	.header {
+		padding: 10px;
+		border-bottom: 1px solid #aaa;
+		font-size: 13px;
+		background: #282828;
+	}
+
+	.head-row-l {
+		width: 50%;
+		color: #b1b1b1;
+		line-height: 30px;
+		.total-num {
+			color: #FF4949;
+		}
+	}
+
+	.table-th {
+		padding: 10px;
+		.condition {
+			font-size: 12px;
+			text-align: center;
+			color: #b1b1b1;
+			image {
+				width: 15px;
+				height: 15px;
+			}
+		}
+	}
+
+	.table-wrap {
+		padding:0 10px 10px;
+		font-size: 14px;
+	}
+	.table {
+		color: #b1b1b1;
+		background: #282828;
+		text-align: center;
+		border-top: 1px solid #b1b1b1;
+		border-left: 1px solid #b1b1b1;
+	}
+
+	.table-td {
+		height: 40px;
+		line-height: 1.5;
+		align-self: center;
+		border-right: 1px solid #b1b1b1;
+		border-bottom: 1px solid #b1b1b1;
+		.table-td-item {
+			line-height: 20px;
+		}
+
+		.red {
+			color: #FF4949;
+		}
+	}
+
+	.al-m {
+		line-height: 40px;
+	}
+
+}

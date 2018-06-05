@@ -1,0 +1,92 @@
+<view class="container">
+	<view class="header">
+		<view class="head-row u-flex">
+			<view class="head-row-l">总持仓数：<text class="total-num">{{count}}手</text></view>
+			<view class="head-row-l">总合约数：<text class="total-num">{{positionCount}}份</text></view>
+		</view>
+		<view class="head-row u-flex">
+			<view class="head-row-l">总合约盈亏：<text class="total-num">{{contractShare}}万元</text></view>
+			<view class="head-row-l">总行权盈亏：<text class="total-num">{{adminShare}}万元</text></view>
+		</view>
+	</view>
+	<view class="table-th u-flex">
+		<view class="condition u-flex-item">合约时间<image src="/image/icon_user.png"></image></view>
+		<view class="condition u-flex-item">合约盈亏<image src="/image/icon_user.png"></image></view>
+		<view class="condition u-flex-item">行权盈亏<image src="/image/icon_user.png"></image></view>
+	</view>
+	<view class="table-wrap">
+		<view class="table">
+			<view class="table-tr u-flex">
+				<view class="table-td u-flex-item">
+					<view class="table-td-item">00001.sz</view>
+					<view class="table-td-item">平安银行</view>
+				</view>
+				<view class="table-td u-flex-item al-m">20万元</view>
+				<view class="table-td u-flex-item  al-m">2019-01-01</view>
+			</view>
+			<view class="table-tr u-flex">
+				<view class="table-td u-flex-item">
+					<view class="table-td-item red">合约盈亏</view>
+					<view class="table-td-item red">20000</view>
+				</view>
+				<view class="table-td u-flex-item">
+					<view class="table-td-item red">行权盈亏</view>
+					<view class="table-td-item red">2000.00元</view>
+				</view>
+				<view class="table-td u-flex-item  al-m">
+					<text>查看明细</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="table-wrap">
+		<view class="table">
+			<view class="table-tr u-flex">
+				<view class="table-td u-flex-item">
+					<view class="table-td-item">00001.sz</view>
+					<view class="table-td-item">平安银行</view>
+				</view>
+				<view class="table-td u-flex-item al-m">20万元</view>
+				<view class="table-td u-flex-item  al-m">2019-01-01</view>
+			</view>
+			<view class="table-tr u-flex">
+				<view class="table-td u-flex-item">
+					<view class="table-td-item red">合约盈亏</view>
+					<view class="table-td-item red">20000</view>
+				</view>
+				<view class="table-td u-flex-item">
+					<view class="table-td-item red">行权盈亏</view>
+					<view class="table-td-item red">2000.00元</view>
+				</view>
+				<view class="table-td u-flex-item  al-m">
+					<text>查看明细</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="table-wrap">
+		<view class="table">
+			<view class="table-tr u-flex">
+				<view class="table-td u-flex-item">
+					<view class="table-td-item">00001.sz</view>
+					<view class="table-td-item">平安银行</view>
+				</view>
+				<view class="table-td u-flex-item al-m">20万元</view>
+				<view class="table-td u-flex-item  al-m">2019-01-01</view>
+			</view>
+			<view class="table-tr u-flex">
+				<view class="table-td u-flex-item">
+					<view class="table-td-item red">合约盈亏</view>
+					<view class="table-td-item red">20000</view>
+				</view>
+				<view class="table-td u-flex-item">
+					<view class="table-td-item red">行权盈亏</view>
+					<view class="table-td-item red">2000.00元</view>
+				</view>
+				<view class="table-td u-flex-item  al-m">
+					<text>查看明细</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
