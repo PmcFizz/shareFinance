@@ -21,19 +21,21 @@ Page({
 	},
 	onShow: function () {
 		console.log('页面显示');
-		wx.showToast({
-			title: '没有权限',
-			icon: 'none',
-			duration: 2000
-		})
+		if(app.globalData.auth == 2) {
+			wx.showToast({
+				title: '没有权限',
+				icon: 'none',
+				duration: 2000
+			})
+			setTimeout(function () {
 
-		setTimeout(function () {
-			if(app.globalData.auth == 2) {
 				wx.switchTab({
 					url: '../consult/consult'
 				})
-			};
-		}, 2000)
+
+			}, 2000)
+		}
+
 
 	},
 	onLoad: function () {

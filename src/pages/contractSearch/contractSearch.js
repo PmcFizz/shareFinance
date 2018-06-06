@@ -10,10 +10,48 @@ Page({
 		contractShare: '',
 		adminShare: '',
 		conList: [],
+		getContractTime:'',
 		showModal: false,
 		modal: ''
 	},
 	onLoad: function () {
+		//定时10s获取合约
+		this.getData();
+		//开启定时器
+		this.getContract();
+	},
+	onShow: function () {
+		console.log('页面显示');
+		if(app.globalData.auth == 2) {
+			wx.showToast({
+				title: '没有权限',
+				icon: 'none',
+				duration: 2000
+			})
+			setTimeout(function () {
+
+				wx.switchTab({
+					url: '../consult/consult'
+				})
+
+			}, 2000)
+		}
+	},
+	onUnload: function(){
+		console.log('页面隐藏,卸载定时器请求。。。')
+		clearTimeout(this.data.getContractTime)
+	},
+	getContract: function(){
+		var that = this;
+		this.setData({
+			getContractTime: setTimeout(function () {
+
+				that.getData();
+				that.getContract();
+			}, 10000)
+		})
+	},
+	getData: function () {
 		var that = this;
 		app.getContract({}, function (res) {
 			if (res.data.code == 1) {
@@ -54,25 +92,11 @@ Page({
 			}
 		})
 	},
-	onShow: function () {
-		console.log('页面显示');
-		wx.showToast({
-			title: '没有权限',
-			icon: 'none',
-			duration: 2000
-		})
-
-		setTimeout(function () {
-			if(app.globalData.auth == 2) {
-				wx.switchTab({
-					url: '../consult/consult'
-				})
-			};
-		}, 2000)
-
-	},
 	seeDetail: function (e) {
 		console.log(e.currentTarget.dataset)
+		//关闭定时器
+		console.log('清除定时器'+ this.data.getContractTime)
+		clearTimeout(this.data.getContractTime)
 		//显示弹层
 		this.setData({
 			showModal: true,
@@ -85,5 +109,7 @@ Page({
 		this.setData({
 			showModal: false
 		})
+		//开启定时器
+		this.getContract();
 	}
 })
