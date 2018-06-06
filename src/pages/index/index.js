@@ -73,7 +73,18 @@ Page({
 				wx.switchTab({
 					url: '../search/search',
 				})
-			} else {
+			} else if(res.data.code == 2) {
+
+				wx.showToast({
+					title: '没有权限',
+					icon: 'none',
+					duration: 2000
+				})
+				wx.switchTab({
+					url: '../consult/consult'
+				})
+			}
+			else {
 				console.log(res.data)
 				if(res.data.msg == "验证码错误") {
 					_this.changeCode();

@@ -19,6 +19,23 @@ Page({
 		searchData: {},
 		userInfo: {}
 	},
+	onShow: function () {
+		console.log('页面显示');
+		wx.showToast({
+			title: '没有权限',
+			icon: 'none',
+			duration: 2000
+		})
+
+		setTimeout(function () {
+			if(app.globalData.auth == 2) {
+				wx.switchTab({
+					url: '../consult/consult'
+				})
+			};
+		}, 2000)
+
+	},
 	onLoad: function () {
 		var that = this
 		app.getSearchData({}, function (res) {
@@ -43,6 +60,18 @@ Page({
 							duration: 2000
 						})
 					}
+				}else if(res.data.code == "2") {
+					//没有权限去到留言界面
+					app.globalData.auth = 2
+					console.log('没有权限')
+					wx.showToast({
+						title: '没有权限',
+						icon: 'none',
+						duration: 2000
+					})
+					wx.switchTab({
+						url: '../consult/consult'
+					})
 				}
 			}
 		})

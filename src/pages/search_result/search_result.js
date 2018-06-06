@@ -11,6 +11,7 @@ Page({
 		}
 	},
 	onLoad: function (option) {
+
 		var infos = wx.getStorageSync('searchData'), qy, rates
 		this.setData({money: option.money})
 		this.setData({
@@ -20,7 +21,7 @@ Page({
 			}
 		})
 		//计算权益金
-		qy = (infos.price * option.money * 10000).toFixed(2)
+		qy = (infos.price * option.money * 100).toFixed(2)
 		rates = (infos.price * 1).toFixed(2);
 		this.setData({
 			quanyi: qy,

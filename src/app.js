@@ -13,7 +13,8 @@ App({
 	// 全局数据
 	globalData: {
 		userInfo: null,
-		sessionId: ''
+		sessionId: '',
+		auth: ''
 	},
 	// 登录
 	login: function (data, cb) {
@@ -93,6 +94,21 @@ App({
 		var sessionId = this.globalData.sessionId
 		wx.request({
 			url: this.serverHost + '/module/leaveWord/save.do',
+			data: data,
+			header: {'Cookie': 'JSESSIONID=' + sessionId},
+			method: 'POST',
+			success: function (res) {
+				if (res.statusCode === 200) {
+					typeof cb == 'function' && cb(res)
+				}
+			}
+		})
+	},
+	//合约查询
+	getContract: function (data, cb) {
+		var  sessionId = this.globalData.sessionId
+		wx.request({
+			url: this.serverHost + '/module/contract/getContract.do',
 			data: data,
 			header: {'Cookie': 'JSESSIONID=' + sessionId},
 			method: 'POST',

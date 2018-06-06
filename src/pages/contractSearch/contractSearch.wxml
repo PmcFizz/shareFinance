@@ -5,8 +5,8 @@
 			<view class="head-row-l">总合约数：<text class="total-num">{{positionCount}}份</text></view>
 		</view>
 		<view class="head-row u-flex">
-			<view class="head-row-l">总合约盈亏：<text class="total-num">{{contractShare}}万元</text></view>
-			<view class="head-row-l">总行权盈亏：<text class="total-num">{{adminShare}}万元</text></view>
+			<view class="head-row-l">总合约盈亏：<text class="total-num">{{contractShare}}元</text></view>
+			<view class="head-row-l">总行权盈亏：<text class="total-num">{{adminShare}}元</text></view>
 		</view>
 	</view>
 	<view class="table-th u-flex">
@@ -14,79 +14,117 @@
 		<view class="condition u-flex-item">合约盈亏<image src="/image/icon_user.png"></image></view>
 		<view class="condition u-flex-item">行权盈亏<image src="/image/icon_user.png"></image></view>
 	</view>
-	<view class="table-wrap">
-		<view class="table">
+	<view class="table-wrap" wx:for="{{conList}}" wx:key="{{item.name}}" wx:for-index="index">
+		<view class="table" >
 			<view class="table-tr u-flex">
 				<view class="table-td u-flex-item">
-					<view class="table-td-item">00001.sz</view>
-					<view class="table-td-item">平安银行</view>
+					<view class="table-td-item">{{item.code}}</view>
+					<view class="table-td-item">{{item.agentName}}</view>
 				</view>
-				<view class="table-td u-flex-item al-m">20万元</view>
-				<view class="table-td u-flex-item  al-m">2019-01-01</view>
+				<view class="table-td u-flex-item al-m">{{item.countMoney}}元</view>
+				<view class="table-td u-flex-item  al-m">{{item.createDate}}</view>
 			</view>
 			<view class="table-tr u-flex">
 				<view class="table-td u-flex-item">
 					<view class="table-td-item red">合约盈亏</view>
-					<view class="table-td-item red">20000</view>
+					<view class="table-td-item red">{{item.contractShare}}元</view>
 				</view>
 				<view class="table-td u-flex-item">
 					<view class="table-td-item red">行权盈亏</view>
-					<view class="table-td-item red">2000.00元</view>
+					<view class="table-td-item red">{{item.adminShare}}元</view>
 				</view>
-				<view class="table-td u-flex-item  al-m">
+				<view class="table-td u-flex-item  al-m" bindtap="seeDetail"  data-index="{{index}}">
 					<text>查看明细</text>
 				</view>
 			</view>
 		</view>
 	</view>
-	<view class="table-wrap">
-		<view class="table">
-			<view class="table-tr u-flex">
-				<view class="table-td u-flex-item">
-					<view class="table-td-item">00001.sz</view>
-					<view class="table-td-item">平安银行</view>
+	<view class="mark-model" wx:if="{{showModal}}" >
+		<view class="mask"></view>
+		<view class="mark-wrap">
+			<view class="close" bindtap="colseModal">X</view>
+			<view class="head">合约明细</view>
+			<view class="main-wrap">
+				<view class="table" >
+					<view class="table-tr u-flex">
+						<view class="table-td u-flex-item al-m">
+							{{modal.name}}
+						</view>
+						<view class="table-td u-flex-item  al-m" style="flex: 2;">{{modal.agentName}}</view>
+					</view>
+					<view class="table-tr u-flex">
+						<view class="table-td u-flex-item">
+							<view class="table-td-item">{{modal.code}}</view>
+							<view class="table-td-item">{{modal.agentName}}</view>
+						</view>
+						<view class="table-td u-flex-item">
+							<view class="table-td-item">起始日期</view>
+							<view class="table-td-item">{{modal.startDate}}</view>
+						</view>
+						<view class="table-td u-flex-item  al-m" bindtap="seeDetail">
+							<view class="table-td-item">结束日期</view>
+							<view class="table-td-item">{{modal.endDate}}</view>
+						</view>
+					</view>
+					<view class="table-tr u-flex">
+						<view class="table-td u-flex-item">
+							<view class="table-td-item">名义本金</view>
+							<view class="table-td-item">{{modal.countMoney}}元</view>
+						</view>
+						<view class="table-td u-flex-item">
+							<view class="table-td-item">期权费率</view>
+							<view class="table-td-item">{{modal.prize}}%</view>
+						</view>
+						<view class="table-td u-flex-item  al-m">
+							<view class="table-td-item red">持仓股数</view>
+							<view class="table-td-item red">{{modal.positionCount}}</view>
+						</view>
+					</view>
+					<view class="table-tr u-flex">
+						<view class="table-td u-flex-item">
+							<view class="table-td-item">期初价格</view>
+							<view class="table-td-item">{{modal.lastPrice}}</view>
+						</view>
+						<view class="table-td u-flex-item">
+							<view class="table-td-item red">持仓成本</view>
+							<view class="table-td-item red">{{modal.theLastPrize}}</view>
+						</view>
+						<view class="table-td u-flex-item  al-m" >
+							<view class="table-td-item">现价</view>
+							<view class="table-td-item">{{modal.positionPriseNow}}</view>
+						</view>
+					</view>
+					<view class="table-tr u-flex">
+						<view class="table-td u-flex-item">
+							<view class="table-td-item red">合约盈亏</view>
+							<view class="table-td-item red">{{modal.contractShare}}元</view>
+						</view>
+						<view class="table-td u-flex-item">
+							<view class="table-td-item red">行权盈亏</view>
+							<view class="table-td-item red">{{modal.adminShare}}元</view>
+						</view>
+						<view class="table-td u-flex-item  al-m" >
+							<view class="table-td-item red"></view>
+							<view class="table-td-item red"></view>
+						</view>
+					</view>
+					<view class="table-tr u-flex">
+						<view class="table-td u-flex-item">
+							<view class="table-td-item">证券公司</view>
+							<view class="table-td-item">{{modal.optionCompany}}</view>
+						</view>
+						<view class="table-td u-flex-item">
+							<view class="table-td-item">资金账号</view>
+							<view class="table-td-item">{{modal.priceNumber}}</view>
+						</view>
+						<view class="table-td u-flex-item  al-m" >
+							<view class="table-td-item"></view>
+							<view class="table-td-item "></view>
+						</view>
+					</view>
 				</view>
-				<view class="table-td u-flex-item al-m">20万元</view>
-				<view class="table-td u-flex-item  al-m">2019-01-01</view>
 			</view>
-			<view class="table-tr u-flex">
-				<view class="table-td u-flex-item">
-					<view class="table-td-item red">合约盈亏</view>
-					<view class="table-td-item red">20000</view>
-				</view>
-				<view class="table-td u-flex-item">
-					<view class="table-td-item red">行权盈亏</view>
-					<view class="table-td-item red">2000.00元</view>
-				</view>
-				<view class="table-td u-flex-item  al-m">
-					<text>查看明细</text>
-				</view>
-			</view>
-		</view>
-	</view>
-	<view class="table-wrap">
-		<view class="table">
-			<view class="table-tr u-flex">
-				<view class="table-td u-flex-item">
-					<view class="table-td-item">00001.sz</view>
-					<view class="table-td-item">平安银行</view>
-				</view>
-				<view class="table-td u-flex-item al-m">20万元</view>
-				<view class="table-td u-flex-item  al-m">2019-01-01</view>
-			</view>
-			<view class="table-tr u-flex">
-				<view class="table-td u-flex-item">
-					<view class="table-td-item red">合约盈亏</view>
-					<view class="table-td-item red">20000</view>
-				</view>
-				<view class="table-td u-flex-item">
-					<view class="table-td-item red">行权盈亏</view>
-					<view class="table-td-item red">2000.00元</view>
-				</view>
-				<view class="table-td u-flex-item  al-m">
-					<text>查看明细</text>
-				</view>
-			</view>
+
 		</view>
 	</view>
 </view>

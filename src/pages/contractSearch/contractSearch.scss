@@ -65,3 +65,53 @@
 	}
 
 }
+
+.mask {
+	position: fixed;
+	left:0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: #fff;
+	opacity: 0.75;
+}
+
+.mark-wrap {
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	width: 360px;
+	transform: translateX(-50%);
+	background: #fff;
+	border-radius: 8px;
+	.close {
+		position: absolute;
+		right: -8px;
+		top: -8px;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		line-height: 20px;
+		border-radius: 50%;
+		background: #282828;
+		color: #fff;
+		font-size: 13px;
+	}
+	.head {
+		padding-left: 15px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 15px;
+		background: #222;
+		color: #f4f4ff;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		text-align: center;
+	}
+
+	.main-wrap {
+		font-size: 16px;
+	}
+}
+
+
