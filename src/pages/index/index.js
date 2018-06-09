@@ -11,7 +11,6 @@ Page({
 
 	},
 	onLoad: function () {
-
 		var _self = this
 		if(app.globalData.sessionId == '') {
 			app.getSession({}, function (res) {

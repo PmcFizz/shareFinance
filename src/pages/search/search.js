@@ -22,8 +22,6 @@ Page({
 	},
 	onShow: function () {
 		console.log('页面显示');
-		// app.globalData.tabbar.list[2].showMe = false;
-		// app.editTabBar();
 	},
 	onLoad: function () {
 		app.editTabBar();
