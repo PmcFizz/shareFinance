@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/contractSearch/contractSearch",
         "pages/index/index",
+        "pages/contractSearch/contractSearch",
         "pages/consult/consult",
         "pages/search/search",
         "pages/search_result/search_result"
@@ -11,29 +11,6 @@
         "navigationBarTitleText": "股票查询",
         "navigationBarBackgroundColor": "#000",
         "backgroundColor": "#000"
-    },
-    "tabBar": {
-        "color": "#b1b1b1",
-        "selectedColor": "#fff",
-        "borderStyle": "black",
-        "backgroundColor": "#282828",
-        "list": [{
-            "pagePath": "pages/search/search",
-            "iconPath": "image/search.png",
-            "selectedIconPath": "image/search_A.png",
-            "text": "询价"
-        },{
-            "pagePath": "pages/contractSearch/contractSearch",
-            "iconPath": "image/search.png",
-            "selectedIconPath": "image/search_A.png",
-            "text": "合约查询"
-            },
-            {
-            "pagePath": "pages/consult/consult",
-            "iconPath": "image/consult.png",
-            "selectedIconPath": "image/consult_A.png",
-            "text": "联系我们"
-        }]
     },
     "networkTimeout": {
         "request": 10000,

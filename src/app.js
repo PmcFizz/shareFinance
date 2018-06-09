@@ -5,16 +5,43 @@ App({
 	onLaunch: function () {
 		var _self = this
 		this.getSession({}, function (res) {
-			if (res.data) {
-				_self.globalData.sessionId = res.data.sessionId
-			}
+			_self.globalData.sessionId = res.data.sessionId
 		})
 	},
 	// 全局数据
 	globalData: {
 		userInfo: null,
 		sessionId: '',
-		auth: ''
+		tabbar:{
+			color: "#b1b1b1",
+			selectedColor: "#fff",
+			borderStyle: "black",
+			backgroundColor: "#282828",
+			list: [{
+				pagePath: "/pages/search/search",
+				iconPath: "/image/search.png",
+				selectedIconPath: "/image/search_A.png",
+				text: "询价",
+				selected: true,
+				showMe: false
+			},{
+				pagePath: "/pages/contractSearch/contractSearch",
+				iconPath: "/image/ctSearch.png",
+				selectedIconPath: "/image/ctSearch_A.png",
+				text: "合约查询",
+				selected: true,
+				showMe: false
+			},
+			{
+				pagePath: "/pages/consult/consult",
+				iconPath: "/image/consult.png",
+				selectedIconPath: "/image/consult_A.png",
+				text: "联系我们",
+				selected: true,
+				showMe: true
+			}]
+		},
+		auth: '' //权限
 	},
 	// 登录
 	login: function (data, cb) {
@@ -118,6 +145,20 @@ App({
 				}
 			}
 		})
+	},
+	editTabBar: function() {
+		var tabbar = this.globalData.tabbar,
+			currentPages = getCurrentPages(),
+			_this = currentPages[currentPages.length - 1],
+			pagePath = _this.__route__;
+		(pagePath.indexOf('/') != 0) && (pagePath = '/' + pagePath);
+		for (var i in tabbar.list) {
+			tabbar.list[i].selected = false;
+			(tabbar.list[i].pagePath == pagePath) && (tabbar.list[i].selected = true);
+		}
+		_this.setData({
+			tabbar: tabbar
+		});
 	},
 	// 获取当前用户信息
 	getUserInfo: function (cb) {

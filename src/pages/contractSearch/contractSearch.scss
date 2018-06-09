@@ -3,7 +3,7 @@
 
 .container{
 	color: #f1f1f1;
-
+	padding-bottom: 60px;
 	.header {
 		padding: 10px;
 		border-bottom: 1px solid #aaa;
@@ -23,12 +23,18 @@
 	.table-th {
 		padding: 10px;
 		.condition {
+			height: 15px;
 			font-size: 12px;
 			text-align: center;
 			color: #b1b1b1;
+			text {
+				line-height: 1.5;
+				align-self: center;
+			}
 			image {
 				width: 15px;
-				height: 15px;
+				height: 11px;
+				align-items: center;
 			}
 		}
 	}
@@ -83,7 +89,6 @@
 	width: 360px;
 	transform: translateX(-50%);
 	background: #fff;
-	border-radius: 8px;
 	.close {
 		position: absolute;
 		right: -8px;
@@ -104,8 +109,6 @@
 		font-size: 15px;
 		background: #222;
 		color: #f4f4ff;
-		border-top-left-radius: 8px;
-		border-top-right-radius: 8px;
 		text-align: center;
 	}
 

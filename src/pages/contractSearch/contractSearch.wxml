@@ -1,3 +1,5 @@
+<import src="../tabBar/tabBar.wxml"/>
+<template is="tabbar" data="{{tabbar}}"/>
 <view class="container">
 	<view class="header">
 		<view class="head-row u-flex">
@@ -6,20 +8,20 @@
 		</view>
 		<view class="head-row u-flex">
 			<view class="head-row-l">总合约盈亏：<text class="total-num">{{contractShare}}元</text></view>
-			<view class="head-row-l">总行权盈亏：<text class="total-num">{{adminShare}}元</text></view>
+			<view class="head-row-l">总合约价值：<text class="total-num">{{adminShare}}元</text></view>
 		</view>
 	</view>
 	<view class="table-th u-flex">
-		<view class="condition u-flex-item">合约时间<image src="/image/icon_user.png"></image></view>
-		<view class="condition u-flex-item">合约盈亏<image src="/image/icon_user.png"></image></view>
-		<view class="condition u-flex-item">行权盈亏<image src="/image/icon_user.png"></image></view>
+		<view class="condition u-flex-item"  bindtap="sortTime">合约时间<image wx:if="{{time}}" src="/image/arr_up.png"></image><image wx:else src="/image/arr_down.png"></image></view>
+		<view class="condition u-flex-item" data-item="1" data-sor = "{{contract}}" bindtap="sortResult">合约盈亏<image  wx:if="{{contract}}" src="/image/arr_up.png"></image><image wx:else src="/image/arr_down.png"></image></view>
+		<view class="condition u-flex-item" data-item="2" data-sor = "{{prize}}" bindtap="sortResult">合约价值<image  wx:if="{{prize}}" src="/image/arr_up.png"></image><image  wx:else src="/image/arr_down.png"></image></view>
 	</view>
 	<view class="table-wrap" wx:for="{{conList}}" wx:key="{{item.name}}" wx:for-index="index">
 		<view class="table" >
 			<view class="table-tr u-flex">
 				<view class="table-td u-flex-item">
 					<view class="table-td-item">{{item.code}}</view>
-					<view class="table-td-item">{{item.agentName}}</view>
+					<view class="table-td-item">{{item.shareName}}</view>
 				</view>
 				<view class="table-td u-flex-item al-m">{{item.countMoney}}元</view>
 				<view class="table-td u-flex-item  al-m">{{item.createDate}}</view>
@@ -30,7 +32,7 @@
 					<view class="table-td-item red">{{item.contractShare}}元</view>
 				</view>
 				<view class="table-td u-flex-item">
-					<view class="table-td-item red">行权盈亏</view>
+					<view class="table-td-item red">合约价值</view>
 					<view class="table-td-item red">{{item.adminShare}}元</view>
 				</view>
 				<view class="table-td u-flex-item  al-m" bindtap="seeDetail"  data-index="{{index}}">
@@ -39,6 +41,7 @@
 			</view>
 		</view>
 	</view>
+	<!--弹出层-->
 	<view class="mark-model" wx:if="{{showModal}}" >
 		<view class="mask"></view>
 		<view class="mark-wrap">
@@ -55,7 +58,7 @@
 					<view class="table-tr u-flex">
 						<view class="table-td u-flex-item">
 							<view class="table-td-item">{{modal.code}}</view>
-							<view class="table-td-item">{{modal.agentName}}</view>
+							<view class="table-td-item">{{modal.shareName}}</view>
 						</view>
 						<view class="table-td u-flex-item">
 							<view class="table-td-item">起始日期</view>
@@ -100,7 +103,7 @@
 							<view class="table-td-item red">{{modal.contractShare}}元</view>
 						</view>
 						<view class="table-td u-flex-item">
-							<view class="table-td-item red">行权盈亏</view>
+							<view class="table-td-item red">合约价值</view>
 							<view class="table-td-item red">{{modal.adminShare}}元</view>
 						</view>
 						<view class="table-td u-flex-item  al-m" >
@@ -124,7 +127,6 @@
 					</view>
 				</view>
 			</view>
-
 		</view>
 	</view>
 </view>

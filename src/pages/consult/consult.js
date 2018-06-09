@@ -3,10 +3,11 @@ var app = getApp()
 Page({
 	data: {
 		suggest: '',
-		email: ''
+		email: '',
+		tabbar:{}
 	},
 	onLoad: function () {
-
+		app.editTabBar();
 	},
 	// 保存数据
 	saveData: function () {

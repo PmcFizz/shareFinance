@@ -36,8 +36,8 @@ Page({
 		})
 	},
 	searchAgin: function () {
-		wx.switchTab({
-			url: '../search/search'
+		wx.navigateBack({
+			delta: 1
 		})
 	}
 })

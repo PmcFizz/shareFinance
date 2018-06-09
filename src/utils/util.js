@@ -37,7 +37,52 @@ function format(date, fmt) {
 	}
 	return fmt;
 }
+
+//数组根据属性排序
+function sortBy(attr,rev){
+	//对结果进行排序，第二个参数没有传递 默认升序排列
+	if(rev == undefined){
+		rev = 1;
+	}else{
+		rev = (rev) ? 1 : -1;
+	}
+
+	return function(a,b){
+		a = parseInt(a[attr]);
+		b = parseInt(b[attr]);
+		if(a < b){
+			return rev * -1;
+		}
+		if(a > b){
+			return rev * 1;
+		}
+		return 0;
+	}
+}
+//时间排序
+function sortByTime(attr,rev){
+	//对结果进行排序，第二个参数没有传递 默认升序排列
+	if(rev == undefined){
+		rev = 1;
+	}else{
+		rev = (rev) ? 1 : -1;
+	}
+
+	return function(a,b){
+		a = Date.parse(a[attr]);
+		b = Date.parse(b[attr]);
+		if(a < b){
+			return rev * -1;
+		}
+		if(a > b){
+			return rev * 1;
+		}
+		return 0;
+	}
+}
 module.exports = {
   formatTime: formatTime,
-	format: format
+	format: format,
+	sortBy: sortBy,
+	sortByTime: sortByTime
 }

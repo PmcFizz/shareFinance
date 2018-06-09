@@ -1,4 +1,6 @@
 <!--index.wxml-->
+<import src="../tabBar/tabBar.wxml"/>
+<template is="tabbar" data="{{tabbar}}"/>
 <view class="search">
 	<view class="search-con u-flex">
 		<text class="tits">标的股票:</text>

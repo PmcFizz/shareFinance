@@ -17,29 +17,17 @@ Page({
 			{'name': '200万', 'value': '200'}
 		],
 		searchData: {},
-		userInfo: {}
+		userInfo: {},
+		tabbar:{}
 	},
 	onShow: function () {
 		console.log('页面显示');
-		if(app.globalData.auth == 2) {
-			wx.showToast({
-				title: '没有权限',
-				icon: 'none',
-				duration: 2000
-			})
-			setTimeout(function () {
-
-				wx.switchTab({
-					url: '../consult/consult'
-				})
-
-			}, 2000)
-		}
-
-
+		// app.globalData.tabbar.list[2].showMe = false;
+		// app.editTabBar();
 	},
 	onLoad: function () {
-		var that = this
+		app.editTabBar();
+		var that = this;
 		app.getSearchData({}, function (res) {
 			console.log(res.data)
 			if (res.data) {
@@ -69,6 +57,7 @@ Page({
 					wx.showToast({
 						title: '没有权限',
 						icon: 'none',
+						mask: true,
 						duration: 2000
 					})
 					wx.switchTab({
@@ -91,6 +80,10 @@ Page({
 			code: e.detail.value
 		})
 		if (e.detail.value.length > 2) {
+			this.setData({
+				stockName: '',
+				stockList: []
+			})
 			this.matchStock({
 				code: e.detail.value
 			})
@@ -109,6 +102,10 @@ Page({
 	},
 	matchStock: function (code) {
 		var _this = this
+		_this.setData({
+			stockName: '',
+			stockList: []
+		})
 		app.getStockName(code, function (res) {
 			console.log(res.data.optionList)
 			if (res.data) {
@@ -118,20 +115,31 @@ Page({
 						url: '../index/index'
 					})
 				} else {
-					if (res.data.optionList.length > 0) {
-						console.log(res.data.optionList[0].optionName)
-						_this.setData({
-							stockName: res.data.optionList[0].optionName
-						})
-						_this.setData({
-							stockList: res.data.optionList
-						})
+					//比较返回的值, 发送的值与输入的值一致时才渲染结果
+					console.log('发送的值'+code.code)
+					console.log('当前的输入值' + _this.data.code)
+					if(code.code == _this.data.code) {
+						if (res.data.optionList.length > 0) {
+							console.log(res.data.optionList[0].optionName)
+							_this.setData({
+								stockName: res.data.optionList[0].optionName
+							})
+							_this.setData({
+								stockList: res.data.optionList
+							})
+						} else {
+							_this.setData({
+								stockName: '',
+								stockList: []
+							})
+						}
 					} else {
 						_this.setData({
 							stockName: '',
 							stockList: []
 						})
 					}
+
 				}
 
 
@@ -146,6 +154,7 @@ Page({
 			days: item.currentTarget.dataset.term,
 			stockList: []
 		})
+
 	},
 	tapHeYue: function (item) {
 		console.log(item)

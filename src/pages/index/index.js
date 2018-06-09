@@ -8,13 +8,24 @@ Page({
 		pwd: '',
 		code: '',
 		codePath: ''
+
 	},
 	onLoad: function () {
-		this.changeCode();
+
+		var _self = this
+		if(app.globalData.sessionId == '') {
+			app.getSession({}, function (res) {
+				console.log('in async---?')
+				app.globalData.sessionId = res.data.sessionId
+				_self.changeCode();
+			})
+		} else {
+			_self.changeCode();
+		}
 		console.log('+++>登录获取图片')
-		app.getUserInfo(function (res) {
-			console.log(res)
-		})
+		// app.getUserInfo(function (res) {
+		// 	console.log(res)
+		// })
 	},
 	nameInput: function (e) {
 		this.setData({
@@ -32,7 +43,7 @@ Page({
 		})
 	},
 	changeCode: function () {
-		var imsrc = app.serverHost +'/captcha.jpg?sessionId=' +  app.globalData.sessionId + '&tid' + Math.random() ;
+		var imsrc = app.serverHost +'/captcha.jpg?sessionId=' +  app.globalData.sessionId + '&tid=' + Math.random() ;
 		this.setData({
 			codePath: imsrc
 		})
@@ -70,30 +81,44 @@ Page({
 		}, _this = this
 		app.login(sendData, function (res) {
 			if (res.data.code == 200) {
-				wx.switchTab({
+				console.log('登录成功')
+				if(res.data.role == 0) {
+					//没有权限
+					console.log('无权限')
+					app.globalData.tabbar.list[0].showMe = false;
+					app.globalData.tabbar.list[1].showMe = false;
+					wx.redirectTo({
+						url: '../consult/consult',
+					})
+					return
+				} else if(res.data.role && res.data.option && res.data.contract &&  res.data.role == 1 && res.data.option == 1 && res.data.contract == 1) {
+					console.log('有3权限')
+					//有询价和查询合约权限
+					app.globalData.tabbar.list[0].showMe = true;
+					app.globalData.tabbar.list[1].showMe = true;
+
+				} else if (res.data.role && res.data.option && res.data.role == 1 && res.data.option == 1 ){
+					console.log('只有查询权限')
+					//只有询价权限
+					app.globalData.tabbar.list[0].showMe = true;
+				}
+				wx.redirectTo({
 					url: '../search/search',
 				})
-			} else if(res.data.code == 2) {
 
-				wx.showToast({
-					title: '没有权限',
-					icon: 'none',
-					duration: 2000
-				})
-				wx.switchTab({
-					url: '../consult/consult'
-				})
-			}
-			else {
+			} else {
 				console.log(res.data)
 				if(res.data.msg == "验证码错误") {
 					_this.changeCode();
+					_this.setData({
+						code: ''
+					})
 				}
 				wx.showToast({
 					title: res.data.msg,
 					icon: 'none',
 					duration: 3000
-			})
+				})
 			}
 		})
 	}
