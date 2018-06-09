@@ -5,16 +5,14 @@ App({
 	onLaunch: function () {
 		var _self = this
 		this.getSession({}, function (res) {
-			if (res.data) {
-				_self.globalData.sessionId = res.data.sessionId
-			}
+			_self.globalData.sessionId = res.data.sessionId
 		})
 	},
 	// 全局数据
 	globalData: {
 		userInfo: null,
 		sessionId: '',
-		auth: ''
+		auth: '' //权限
 	},
 	// 登录
 	login: function (data, cb) {

@@ -10,11 +10,20 @@ Page({
 		codePath: ''
 	},
 	onLoad: function () {
-		this.changeCode();
+		var _self = this
+		if(app.globalData.sessionId == '') {
+			app.getSession({}, function (res) {
+				console.log('in async---?')
+				app.globalData.sessionId = res.data.sessionId
+				_self.changeCode();
+			})
+		} else {
+			_self.changeCode();
+		}
 		console.log('+++>登录获取图片')
-		app.getUserInfo(function (res) {
-			console.log(res)
-		})
+		// app.getUserInfo(function (res) {
+		// 	console.log(res)
+		// })
 	},
 	nameInput: function (e) {
 		this.setData({
@@ -88,6 +97,9 @@ Page({
 				console.log(res.data)
 				if(res.data.msg == "验证码错误") {
 					_this.changeCode();
+					_this.setData({
+						code: ''
+					})
 				}
 				wx.showToast({
 					title: res.data.msg,

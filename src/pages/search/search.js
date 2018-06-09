@@ -25,6 +25,7 @@ Page({
 			wx.showToast({
 				title: '没有权限',
 				icon: 'none',
+				mask: true,
 				duration: 2000
 			})
 			setTimeout(function () {
@@ -69,6 +70,7 @@ Page({
 					wx.showToast({
 						title: '没有权限',
 						icon: 'none',
+						mask: true,
 						duration: 2000
 					})
 					wx.switchTab({
@@ -91,6 +93,10 @@ Page({
 			code: e.detail.value
 		})
 		if (e.detail.value.length > 2) {
+			this.setData({
+				stockName: '',
+				stockList: []
+			})
 			this.matchStock({
 				code: e.detail.value
 			})
@@ -109,6 +115,10 @@ Page({
 	},
 	matchStock: function (code) {
 		var _this = this
+		_this.setData({
+			stockName: '',
+			stockList: []
+		})
 		app.getStockName(code, function (res) {
 			console.log(res.data.optionList)
 			if (res.data) {
@@ -146,6 +156,7 @@ Page({
 			days: item.currentTarget.dataset.term,
 			stockList: []
 		})
+
 	},
 	tapHeYue: function (item) {
 		console.log(item)

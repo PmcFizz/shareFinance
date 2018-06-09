@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/contractSearch/contractSearch",
         "pages/index/index",
+        "pages/contractSearch/contractSearch",
         "pages/consult/consult",
         "pages/search/search",
         "pages/search_result/search_result"
